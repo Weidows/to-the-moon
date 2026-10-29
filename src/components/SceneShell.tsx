@@ -127,13 +127,13 @@ export const Footer: React.FC<{right?: string}> = ({right = 'FOR RIVER ♪'}) =>
       style={{
         position: 'absolute',
         left: layout.pad,
-        bottom: layout.portrait ? layout.pad * 1.9 : layout.pad * 0.62,
+        bottom: layout.portrait ? layout.pad * 4.1 : layout.pad * 0.62,
         right: layout.pad,
         display: 'flex',
         justifyContent: 'space-between',
         fontFamily: 'Zpix, monospace',
-        fontSize: snap(layout.W * 0.0105),
-        color: 'rgba(233,238,248,0.34)',
+        fontSize: layout.smallSize,
+        color: 'rgba(233,238,248,0.42)',
         letterSpacing: 3,
       }}
     >

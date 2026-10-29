@@ -13,7 +13,7 @@ export const CarnivalScene: React.FC<{durationInFrames: number}> = ({durationInF
     art={
       <>
         <Shot
-          src="img/ferris.jpg"
+          src="img/gen_carnival.jpg"
           to={330}
           zoom={[1.02, 1.12]}
           focus={[0.5, 0.5]}

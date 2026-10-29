@@ -59,4 +59,28 @@ src/
 - 字体：Zpix 最像素（OFL），`public/fonts/zpix.woff2`
 - 玩法提示：`tools/shots.mjs` 可以一次打包渲染任意帧，用于逐帧检查排版
 
+## 本地 MOSS-Image 生成的插画
+
+官方素材里画面不清楚、分辨率偏低或构图不适配的位置，用本地 ComfyUI 的
+MOSS-Image 重新画了 8 张 1792×1008 的像素插画：
+
+| 文件名 | 用在哪 | 替代了 |
+| --- | --- | --- |
+| `gen_hospital.jpg` | 00 现在 · 临终病房 | 暗且带 HUD 的游戏截图 |
+| `gen_memento.jpg` | 01 记忆回廊 · 满屋折纸兔 | 带英文弹窗的截图 |
+| `gen_rain.jpg` | 02 灯塔 · 雨夜 | 过暗的雨夜截图 |
+| `gen_piano.jpg` | 03 / 07 · 钢琴房 | 空旷的暗色插画 |
+| `gen_carnival.jpg` | 04 狂欢节 | 760px 小图放大 |
+| `gen_void.jpg` | 06 封存 · 记忆虚空 | 昏暗难辨的截图 |
+| `gen_twins.jpg` | 06 封存 · 双胞胎卧室 | 原本没有图 |
+| `gen_nasa.jpg` | 07 改写 · NASA 大厅 | 原本没有图 |
+
+- 提示词：`tools/jobs/pl_*.json`（中文长句 + 统一风格尾巴 + 固定 seed，可直接改文案重跑）
+- 出图：`python tools/moss.py --job tools/jobs/pl_rain.json --out .tmp/moss`
+  管线是 `UNETLoader(moss_image_sft_int8_convrot) → KSampler(er_sde/simple, 30步, cfg 3)`
+  ＋ `CLIPLoader(qwen3.5_9b_w4a8_gptq, type=moss_image)` ＋ `flux2-vae_small`。
+  原工作流里的 `SpectrumMOSSImageAdaptive` 加速节点本机没装（`custom_nodes` 里没有），
+  脚本走的是不开加速的直连版本；装上后可以加回节点、步数降到 25。
+- 原图留在 `ref/generated/`，`public/img/` 里是压缩后的 JPEG。
+
 素材版权归 Freebird Games 所有，本片为非商业同人致敬作品。

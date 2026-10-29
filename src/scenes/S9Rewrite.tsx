@@ -21,8 +21,9 @@ export const RewriteScene: React.FC<{durationInFrames: number}> = ({durationInFr
           fadeOut={18}
           brightness={1.05}
         />
-        <Shot src="img/launching.jpg" from={280} to={590} zoom={[1.04, 1.16]} focus={[0.5, 0.55]} />
-        <Shot src="img/past_echoes.jpg" from={570} zoom={[1.02, 1.14]} focus={[0.5, 0.5]} brightness={0.92} />
+        <Shot src="img/gen_nasa.jpg" from={280} to={450} zoom={[1.03, 1.12]} focus={[0.5, 0.5]} />
+        <Shot src="img/launching.jpg" from={430} to={610} zoom={[1.02, 1.12]} focus={[0.5, 0.5]} />
+        <Shot src="img/gen_piano.jpg" from={570} zoom={[1.02, 1.14]} focus={[0.5, 0.5]} brightness={0.95} />
         <Scrim height="60%" />
       </>
     }

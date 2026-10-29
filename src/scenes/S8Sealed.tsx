@@ -13,15 +13,16 @@ export const SealedScene: React.FC<{durationInFrames: number}> = ({durationInFra
     art={
       <>
         <Shot
-          src="img/memory_flood.jpg"
-          pixel
-          zoom={[1.26, 1.52]}
-          focus={[0.5, 0.585]}
+          src="img/gen_void.jpg"
+          to={352}
+          zoom={[1.06, 1.2]}
+          focus={[0.5, 0.5]}
           fadeIn={14}
-          fadeOut={18}
-          saturate={0.6}
-          brightness={0.85}
+          fadeOut={16}
+          saturate={0.8}
+          brightness={0.95}
         />
+        <Shot src="img/gen_twins.jpg" from={332} zoom={[1.02, 1.14]} focus={[0.5, 0.5]} />
         <Scrim height="64%" />
       </>
     }

@@ -45,11 +45,10 @@ export const CorridorScene: React.FC<{durationInFrames: number}> = ({durationInF
       art={
         <>
           <Shot
-            src="img/memento_platypus.jpg"
+            src="img/gen_memento.jpg"
             to={300}
-            pixel
-            zoom={[1.18, 1.02]}
-            focus={[0.52, 0.5]}
+            zoom={[1.16, 1.02]}
+            focus={[0.5, 0.5]}
             fadeIn={10}
             fadeOut={18}
           />

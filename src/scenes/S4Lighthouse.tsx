@@ -16,15 +16,14 @@ export const LighthouseScene: React.FC<{durationInFrames: number}> = ({durationI
       art={
         <>
           <Shot
-            src="img/rain_lighthouse.jpg"
+            src="img/gen_rain.jpg"
             to={330}
-            pixel
-            zoom={[1.26, 1.14]}
-            focus={[0.5, 0.585]}
+            zoom={[1.14, 1.02]}
+            focus={[0.5, 0.52]}
             fadeIn={12}
             fadeOut={18}
-            saturate={0.88}
-            brightness={1.16}
+            saturate={0.92}
+            brightness={1.04}
           />
           <Shot src="img/tower_night.jpg" from={308} to={650} zoom={[1.02, 1.12]} focus={[0.5, 0.5]} />
           <Shot src="img/lighthouse_night.jpg" from={630} zoom={[1.03, 1.14]} focus={[0.52, 0.45]} />

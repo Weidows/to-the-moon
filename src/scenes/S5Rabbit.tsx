@@ -17,8 +17,8 @@ const FloatingRabbit: React.FC = () => {
     <div
       style={{
         position: 'absolute',
-        right: layout.portrait ? '12%' : '16%',
-        top: layout.portrait ? layout.art.y - size * 0.35 : layout.H * 0.16,
+        right: layout.portrait ? '9%' : '16%',
+        top: layout.portrait ? layout.art.y + size * 0.18 : layout.H * 0.16,
         opacity: 0.9,
         rotate: `${-6 + drift * 0.12}deg`,
         translate: `0px ${drift}px`,
@@ -55,7 +55,7 @@ export const RabbitScene: React.FC<{durationInFrames: number}> = ({durationInFra
             brightness={0.96}
           />
           <Shot src="img/river_reading.jpg" from={320} to={660} zoom={[1.02, 1.12]} focus={[0.5, 0.45]} />
-          <Shot src="img/past_echoes.jpg" from={640} zoom={[1.04, 1.14]} focus={[0.5, 0.5]} brightness={0.9} />
+          <Shot src="img/gen_piano.jpg" from={640} zoom={[1.04, 1.14]} focus={[0.5, 0.52]} brightness={1.0} />
           <Scrim height="60%" />
         </>
       }

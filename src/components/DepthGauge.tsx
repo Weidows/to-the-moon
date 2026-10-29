@@ -38,18 +38,49 @@ export const DepthGauge: React.FC = () => {
   const blink = Math.floor(frame / 15) % 2 === 0;
 
   if (layout.portrait) {
-    const y = layout.H - Math.round(layout.pad * 1.35);
+    const y = layout.H - Math.round(layout.pad * 2.2);
     const x0 = layout.pad;
     const x1 = layout.W - layout.pad;
     const step = (x1 - x0) / (N - 1);
-    const fontSize = snap(layout.W * 0.0215);
+    const capSize = layout.smallSize;
+    const labelSize = snap(layout.W * 0.034);
+    const activeName = active < 0 ? '序章' : NODES[Math.min(active, N - 1)];
+
     return (
-      <div style={{position: 'absolute', left: 0, right: 0, top: y, height: 120}}>
+      <div style={{position: 'absolute', left: 0, right: 0, top: y - Math.round(capSize * 2.2), height: 220}}>
         <div
           style={{
             position: 'absolute',
             left: x0,
             top: 0,
+            fontFamily: PIXEL,
+            fontSize: capSize,
+            color: 'rgba(200,214,238,0.55)',
+            letterSpacing: 2,
+          }}
+        >
+          记忆层深
+        </div>
+        <div
+          style={{
+            position: 'absolute',
+            right: layout.pad,
+            top: -Math.round(labelSize * 0.32),
+            fontFamily: PIXEL,
+            fontSize: labelSize,
+            color: C.gold,
+            letterSpacing: 2,
+            textShadow: '0 2px 12px rgba(0,0,0,0.9)',
+          }}
+        >
+          {active < 0 ? '序章' : active >= N - 1 ? '终章' : `${String(LAYERS[active].index).padStart(2, '0')} ${activeName}`}
+        </div>
+
+        <div
+          style={{
+            position: 'absolute',
+            left: x0,
+            top: Math.round(capSize * 2.1),
             width: x1 - x0,
             height: 1,
             background: 'rgba(255,255,255,0.16)',
@@ -59,8 +90,8 @@ export const DepthGauge: React.FC = () => {
           style={{
             position: 'absolute',
             left: x0,
-            top: 0,
-            width: Math.max(0, (x0 + step * dot + step * 0.75 - x0) as number),
+            top: Math.round(capSize * 2.1),
+            width: Math.max(0, step * (dot + 0.75)),
             height: 1,
             background: `linear-gradient(90deg, rgba(255,214,146,0) 0%, ${C.gold} 100%)`,
             boxShadow: `0 0 12px ${C.gold}`,
@@ -70,50 +101,21 @@ export const DepthGauge: React.FC = () => {
           const lit = k <= dot + 0.15;
           const isActive = k === active;
           return (
-            <React.Fragment key={n}>
-              <div
-                style={{
-                  position: 'absolute',
-                  left: x0 + step * k - (isActive ? 4 : 2),
-                  top: isActive ? -4 : -2,
-                  width: isActive ? 9 : 5,
-                  height: isActive ? 9 : 5,
-                  borderRadius: '50%',
-                  background: lit ? (isActive ? C.gold : C.aqua) : 'rgba(255,255,255,0.25)',
-                  boxShadow: isActive ? `0 0 ${blink ? 16 : 8}px ${C.gold}` : undefined,
-                }}
-              />
-              <div
-                style={{
-                  position: 'absolute',
-                  left: x0 + step * k,
-                  top: 18,
-                  translate: '-50% 0',
-                  fontFamily: PIXEL,
-                  fontSize,
-                  color: isActive ? C.gold : lit ? 'rgba(233,238,248,0.8)' : 'rgba(200,214,238,0.4)',
-                  whiteSpace: 'nowrap',
-                  letterSpacing: 1,
-                }}
-              >
-                {n}
-              </div>
-            </React.Fragment>
+            <div
+              key={n}
+              style={{
+                position: 'absolute',
+                left: x0 + step * k - (isActive ? 5 : 2),
+                top: Math.round(capSize * 2.1) - (isActive ? 5 : 2),
+                width: isActive ? 10 : 5,
+                height: isActive ? 10 : 5,
+                borderRadius: '50%',
+                background: lit ? (isActive ? C.gold : C.aqua) : 'rgba(255,255,255,0.25)',
+                boxShadow: isActive ? `0 0 ${blink ? 18 : 9}px ${C.gold}` : undefined,
+              }}
+            />
           );
         })}
-        <div
-          style={{
-            position: 'absolute',
-            left: x0,
-            top: 56,
-            fontFamily: PIXEL,
-            fontSize: snap(fontSize * 0.82),
-            color: 'rgba(200,214,238,0.45)',
-            letterSpacing: 2,
-          }}
-        >
-          记忆层深 · MEMORY DEPTH
-        </div>
       </div>
     );
   }

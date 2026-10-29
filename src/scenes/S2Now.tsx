@@ -13,10 +13,9 @@ export const NowScene: React.FC<{durationInFrames: number}> = ({durationInFrames
     art={
       <>
         <Shot
-          src="img/hospital_room.jpg"
+          src="img/gen_hospital.jpg"
           to={330}
-          pixel
-          zoom={[1.22, 1.04]}
+          zoom={[1.16, 1.02]}
           focus={[0.5, 0.52]}
           fadeIn={10}
           fadeOut={20}
