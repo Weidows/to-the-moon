@@ -14,7 +14,7 @@ import {RabbitScene} from './scenes/S5Rabbit';
 import {CarnivalScene} from './scenes/S6Carnival';
 import {PromiseScene} from './scenes/S7Promise';
 import {SealedScene} from './scenes/S8Sealed';
-import {RewriteScene} from './scenes/S9Rewrite';
+import {ChoiceScene} from './scenes/S9Rewrite';
 import {MoonScene} from './scenes/S10Moon';
 
 const SCENE_MAP: Record<string, React.FC<{durationInFrames: number}>> = {
@@ -26,7 +26,7 @@ const SCENE_MAP: Record<string, React.FC<{durationInFrames: number}>> = {
   carnival: CarnivalScene,
   promise: PromiseScene,
   sealed: SealedScene,
-  rewrite: RewriteScene,
+  choice: ChoiceScene,
   moon: MoonScene,
 };
 
@@ -39,7 +39,7 @@ const LABEL: Record<string, string> = {
   carnival: '04 狂欢节',
   promise: '05 约定',
   sealed: '06 封存',
-  rewrite: '07 改写',
+  choice: '07 抉择',
   moon: '终章 · 我们的月球',
 };
 

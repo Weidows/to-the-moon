@@ -20,7 +20,7 @@ export const LAYERS: LayerTag[] = [
   {index: 4, code: 'LAYER 04', name: '狂欢节', short: '狂欢节', world: '记忆'},
   {index: 5, code: 'LAYER 05', name: '约定', short: '约定', world: '记忆'},
   {index: 6, code: 'LAYER 06', name: '封存', short: '封存', world: '记忆'},
-  {index: 7, code: 'LAYER 07', name: '改写', short: '改写', world: '记忆'},
+  {index: 7, code: 'LAYER 07', name: '抉择', short: '抉择', world: '记忆'},
 ];
 
 export type Segment = {
@@ -39,7 +39,7 @@ export const SEGMENTS: Segment[] = [
   {id: 'carnival', from: 138, to: 168, layer: LAYERS[4]},
   {id: 'promise', from: 168, to: 196, layer: LAYERS[5]},
   {id: 'sealed', from: 196, to: 216, layer: LAYERS[6]},
-  {id: 'rewrite', from: 216, to: 244, layer: LAYERS[7]},
+  {id: 'choice', from: 216, to: 244, layer: LAYERS[7]},
   {id: 'moon', from: 244, to: 313, layer: null},
 ];
 

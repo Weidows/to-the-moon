@@ -69,12 +69,9 @@ export const CorridorScene: React.FC<{durationInFrames: number}> = ({durationInF
         </Beat>
 
         <Beat from={300} until={620}>
-          <Line text="每摸到一件东西，就退回更早的一层。" at={302} />
-          <Line
-            text="时钟倒转，雨声倒退，灯光从暖变冷。"
-            at={372}
-            color="rgba(233,238,248,0.82)"
-          />
+          <Line text="他们先把约翰改成一个想去月球的人。" at={302} />
+          <Line text="试了三次，三次都被记忆推回原地。" at={392} color="rgba(233,238,248,0.82)" />
+          <Line text="线索全都指向同一个名字：River。" at={494} color={C.aqua} />
         </Beat>
 
         <Beat from={620}>

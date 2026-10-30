@@ -57,7 +57,8 @@ export const NowScene: React.FC<{durationInFrames: number}> = ({durationInFrames
 
       <Beat from={700}>
         <Line text="「他有什么愿望？」" at={702} color={C.mist} type />
-        <Quote lines={['「去月球。他想去月球。」']} at={760} cps={11} />
+        <Quote lines={['「去月球。他想去月球。」']} at={756} cps={11} />
+        <Line text="可问他为什么，他自己也说不上来。" at={838} color="rgba(233,238,248,0.72)" />
       </Beat>
     </TextBlock>
   </SceneShell>

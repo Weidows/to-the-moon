@@ -30,14 +30,16 @@ export const SealedScene: React.FC<{durationInFrames: number}> = ({durationInFra
     <Flash from={320} peak={338} to={360} max={0.14} />
     <TextBlock>
       <Beat from={16} until={330}>
-        <Line text="有一段记忆，被封住了。" at={18} type />
-        <Line text="他小时候吃过大量 β 受体阻滞剂——" at={90} color="rgba(233,238,248,0.82)" />
-        <Line text="可他从来没有过心脏病。" at={170} color="rgba(233,238,248,0.82)" />
+        <Line text="童年的记忆，像被雾堵住了。" at={18} type />
+        <Line text="他们挤了很久，才看清里面——" at={110} color="rgba(233,238,248,0.82)" />
+        <Line text="两个一模一样的孩子。" at={232} color="rgba(233,238,248,0.82)" />
       </Beat>
 
       <Beat from={330}>
-        <Line text="那段空白的记忆里，出现了两个约翰。" at={332} />
-        <Quote lines={['「他有一个双胞胎兄弟。」', '「乔伊。」']} at={410} gap={40} cps={11} />
+        <Quote lines={['「他有一个双胞胎兄弟。」', '「乔伊。」']} at={332} gap={40} cps={11} />
+        <Line text="乔伊在童年时意外死了。" at={430} />
+        <Line text="母亲受不了，给约翰喂了记忆阻滞剂。" at={498} color="rgba(233,238,248,0.82)" />
+        <Line text="于是他把月亮，也一起忘了。" at={566} color={C.moon} />
       </Beat>
     </TextBlock>
   </SceneShell>

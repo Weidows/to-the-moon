@@ -168,29 +168,33 @@ export const MoonScene: React.FC<{durationInFrames: number}> = ({durationInFrame
       art={
         <>
           <Shot
-            mode="full"
-            src="img/bridge_sunset.jpg"
-            to={300}
-            zoom={[1.04, 1.16]}
-            focus={[0.5, 0.5]}
-            fadeIn={16}
-            fadeOut={18}
+            src="img/rocket_pastel.jpg"
+            to={280}
+            zoom={[1.05, 1.16]}
+            focus={[0.5, 0.55]}
+            fadeIn={14}
+            fadeOut={16}
+            brightness={1.05}
           />
+          <Shot src="img/gen_nasa.jpg" from={260} to={500} zoom={[1.03, 1.12]} focus={[0.5, 0.5]} />
+          <Shot src="img/gen_piano.jpg" from={480} to={710} zoom={[1.02, 1.12]} focus={[0.5, 0.52]} />
+          <Shot src="img/gen_cabin.jpg" from={690} to={900} zoom={[1.03, 1.13]} focus={[0.5, 0.5]} />
+          <Shot src="img/launching.jpg" from={880} to={1040} zoom={[1.02, 1.14]} focus={[0.5, 0.5]} />
           <Shot
             mode="full"
             src="img/silhouettes_moon.jpg"
-            from={280}
-            to={900}
-            zoom={[1.02, 1.14]}
-            focus={[0.42, 0.44]}
+            from={1000}
+            to={1160}
+            zoom={[1.02, 1.1]}
+            focus={[0.44, 0.44]}
           />
           <Shot
             mode="full"
             src="img/deep_space.jpg"
-            from={860}
-            zoom={[1.0, 1.1]}
+            from={1100}
+            zoom={[1.0, 1.08]}
             focus={[0.5, 0.5]}
-            brightness={0.5}
+            brightness={0.44}
             saturate={0.9}
           />
           <Scrim height="66%" />
@@ -198,29 +202,34 @@ export const MoonScene: React.FC<{durationInFrames: number}> = ({durationInFrame
         </>
       }
     >
-      <Flash from={280} peak={300} to={340} max={0.34} />
-      <Flash from={860} peak={884} to={930} max={0.3} />
+      <Flash from={258} peak={276} to={316} max={0.3} />
+      <Flash from={688} peak={706} to={744} max={0.26} />
+      <Flash from={1098} peak={1116} to={1160} max={0.24} />
 
       <TextBlock>
-        <Beat from={16} until={300}>
-          <Line text="火箭升空。" at={18} type />
-          <Line text="心跳，一点一点慢下来。" at={110} color="rgba(233,238,248,0.8)" />
+        <Beat from={16} until={250}>
+          <Line text="记忆改写成功。" at={18} type />
+          <Line text="青年的约翰，考进了航天中心。" at={104} color="rgba(233,238,248,0.82)" />
         </Beat>
 
-        <Beat from={300} until={880}>
-          <Quote
-            lines={['「我会在生命的最后一刻，', '牵起你的手。」']}
-            at={330}
-            gap={56}
-            cps={12}
-          />
-          <Quote lines={['「一起去往，属于我们的月球。」']} at={520} cps={12} />
+        <Beat from={250} until={490}>
+          <Line text="在那里，他遇见了 River。" at={252} />
+          <Line text="奇迹般的，他们再一次相爱。" at={356} color={C.gold} />
         </Beat>
 
-        <Beat from={880} until={1068}>
-          <Line text="他记得自己应该去爱，却说不出原因。" at={884} type />
-          <Line text="她明白自己的爱，却难以说出口。" at={980} color="rgba(233,238,248,0.82)" />
-          <Line text="爱，会自己找到出路。就像生命一样。" at={1060} color={C.gold} />
+        <Beat from={490} until={700}>
+          <Line text="钢琴房里传来一首曲子。" at={492} color={C.mist} />
+          <Quote lines={['「这首叫什么？」', '「《For River》。」']} at={546} gap={48} cps={10} />
+        </Beat>
+
+        <Beat from={700} until={890}>
+          <Line text="他们并排坐在飞船上。" at={702} />
+          <Line text="窗外，月球越来越近。" at={800} color="rgba(233,238,248,0.82)" />
+        </Beat>
+
+        <Beat from={890} until={1090}>
+          <Line text="火箭升空。" at={892} type />
+          <Line text="心跳，一点一点慢下来。" at={982} color={C.moon} />
         </Beat>
       </TextBlock>
 

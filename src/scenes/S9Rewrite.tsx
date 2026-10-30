@@ -3,55 +3,51 @@ import {C} from '../theme';
 import {LAYERS} from '../timeline';
 import {SceneShell, TextBlock} from '../components/SceneShell';
 import {Shot, Scrim, Flash} from '../components/Shot';
-import {Line, Quote, Beat} from '../components/Text';
+import {Line, Beat} from '../components/Text';
 
-/** LAYER 07 — the rewrite: two lives start apart, then meet again. */
-export const RewriteScene: React.FC<{durationInFrames: number}> = ({durationInFrames}) => (
+/**
+ * LAYER 07 — the choice.
+ * The wish is a childhood promise. To grant it they must take River out of his
+ * life. The two doctors fight, and Eve finds the third way: not deletion, but
+ * letting the two children walk past each other.
+ */
+export const ChoiceScene: React.FC<{durationInFrames: number}> = ({durationInFrames}) => (
   <SceneShell
     durationInFrames={durationInFrames}
     layer={LAYERS[7]}
     art={
       <>
         <Shot
-          src="img/rocket_pastel.jpg"
-          to={300}
-          zoom={[1.06, 1.18]}
-          focus={[0.5, 0.55]}
+          src="img/gen_clash.jpg"
+          to={600}
+          zoom={[1.14, 1.02]}
+          focus={[0.5, 0.5]}
           fadeIn={14}
           fadeOut={18}
-          brightness={1.05}
+          brightness={0.98}
         />
-        <Shot src="img/gen_nasa.jpg" from={280} to={450} zoom={[1.03, 1.12]} focus={[0.5, 0.5]} />
-        <Shot src="img/launching.jpg" from={430} to={610} zoom={[1.02, 1.12]} focus={[0.5, 0.5]} />
-        <Shot src="img/gen_piano.jpg" from={570} zoom={[1.02, 1.14]} focus={[0.5, 0.5]} brightness={0.95} />
-        <Scrim height="60%" />
+        <Shot src="img/gen_miss.jpg" from={570} zoom={[1.02, 1.16]} focus={[0.5, 0.52]} />
+        <Scrim height="62%" />
       </>
     }
   >
-    <Flash from={280} peak={298} to={330} max={0.3} />
-    <Flash from={560} peak={578} to={610} max={0.2} />
+    <Flash from={560} peak={580} to={620} max={0.26} />
 
     <TextBlock>
-      <Beat from={16} until={290}>
-        <Line text="于是，伊娃决定改写。" at={18} type />
-        <Line
-          text="River 从记忆里消失了。"
-          at={100}
-          color="rgba(233,238,248,0.82)"
-        />
+      <Beat from={16} until={300}>
+        <Line text="去月球的愿望，来自一个约定。" at={18} type />
+        <Line text="药抹掉了它，它却长成了执念。" at={112} color="rgba(233,238,248,0.82)" />
       </Beat>
 
-      <Beat from={290} until={570}>
-        <Line text="在 NASA 的大厅里，他们第一次见面。" at={292} type />
-        <Line text="她只是被换到了另一条路上。" at={350} color="rgba(233,238,248,0.82)" />
-        <Line text="训练、倒计时、发射。" at={420} color="rgba(233,238,248,0.8)" />
-        <Line text="这一次，他们一起。" at={440} color={C.gold} />
+      <Beat from={300} until={560}>
+        <Line text="要满足这个愿望，就得拿掉 River。" at={302} />
+        <Line text="两个博士在记忆深处，吵了起来。" at={392} color="rgba(233,238,248,0.82)" />
       </Beat>
 
-      <Beat from={570}>
-        <Line text="钢琴房里传来一首曲子。" at={572} color={C.mist} />
-        <Quote lines={['「这首叫什么？」', '「《For River》。」']} at={630} gap={52} cps={10} />
-        <Line text="于是他们又一次相爱了。" at={740} color="rgba(233,238,248,0.7)" />
+      <Beat from={560}>
+        <Line text="最后，是伊娃做了决定。" at={562} />
+        <Line text="她没有删掉 River。" at={644} color={C.gold} />
+        <Line text="她只是让小时候的他们，错过了彼此。" at={706} color="rgba(233,238,248,0.86)" />
       </Beat>
     </TextBlock>
   </SceneShell>
