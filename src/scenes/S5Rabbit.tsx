@@ -1,9 +1,9 @@
 import React from 'react';
 import {interpolate, useCurrentFrame} from 'remotion';
-import {C, PIXEL, snap} from '../theme';
+import {C} from '../theme';
 import {useLayout} from '../layout';
 import {LAYERS} from '../timeline';
-import {SceneShell, TextBlock} from '../components/SceneShell';
+import {SceneShell, TextBlock, Bridge} from '../components/SceneShell';
 import {Shot, Scrim, Flash} from '../components/Shot';
 import {Line, Quote, Beat} from '../components/Text';
 import {Rabbit} from '../components/Motifs';
@@ -30,9 +30,12 @@ const FloatingRabbit: React.FC = () => {
   );
 };
 
-/** LAYER 03 — the paper rabbit and "For River". */
+/**
+ * LAYER 03 — the rabbit.
+ * The wrong name is the clue: what he calls it belongs to a memory that was
+ * taken away, so the only way forward is further down.
+ */
 export const RabbitScene: React.FC<{durationInFrames: number}> = ({durationInFrames}) => {
-  const layout = useLayout();
   const frame = useCurrentFrame();
   const rabbitOpacity = interpolate(frame, [40, 90, 300, 340], [0, 1, 1, 0], {
     extrapolateLeft: 'clamp',
@@ -60,7 +63,7 @@ export const RabbitScene: React.FC<{durationInFrames: number}> = ({durationInFra
         </>
       }
     >
-      <Flash from={320} peak={338} to={372} max={0.18} />
+      <Flash from={320} peak={338} to={372} max={0.16} />
 
       <div style={{position: 'absolute', inset: 0, opacity: rabbitOpacity}}>
         <FloatingRabbit />
@@ -68,38 +71,20 @@ export const RabbitScene: React.FC<{durationInFrames: number}> = ({durationInFra
 
       <TextBlock>
         <Beat from={18} until={320}>
-          <Line text="River 有一个习惯：不停地折纸兔子。" at={20} type />
-          <Line text="桌子上、窗台上、灯塔顶上，全是兔子。" at={110} color="rgba(233,238,248,0.8)" />
+          <Line text="她折过成百上千只兔子。" at={20} type />
+          <Line text="桌上、窗台、灯塔顶上，全是兔子。" at={110} color="rgba(233,238,248,0.8)" />
         </Beat>
 
         <Beat from={320} until={660}>
-          <Line text="她举着刚折好的一只，问他：" at={322} color={C.mist} />
-          <Quote lines={['「这是什么？」']} at={370} cps={12} />
-          <Line text="「这是一只兔子。」" at={450} color={C.moon} />
-          <Line text="他要的从来不是这个答案。" at={530} color={C.mist} />
+          <Line text="最后那天，她举着一只，问他：" at={322} color={C.mist} />
+          <Quote lines={['「这是什么？」']} at={392} cps={12} />
+          <Line text="「这是一只兔子。」" at={470} color={C.moon} />
+          <Line text="可那不是兔子。" at={556} color={C.mist} />
         </Beat>
 
         <Beat from={660}>
-          <Line text="后来，他把钢琴搬上二楼。" at={662} />
-          <Line text="为了她，他写了一首曲子。" at={712} color="rgba(233,238,248,0.82)" />
-          <div
-            style={{
-              fontFamily: PIXEL,
-              fontSize: snap(layout.chapterSize * 0.86),
-              color: C.gold,
-              letterSpacing: Math.round(layout.chapterSize * 0.12),
-              marginTop: layout.bodySize * 0.5,
-              textShadow: `0 0 ${layout.chapterSize}px rgba(255,214,146,0.28)`,
-            }}
-          >
-            《For River》
-          </div>
-          <Line
-            text="——给 River"
-            at={790}
-            color="rgba(233,238,248,0.55)"
-            style={{marginTop: layout.bodySize * 0.3}}
-          />
+          <Line text="说错的名字，指向一段被盖住的记忆。" at={662} />
+          <Bridge text="他们决定再往下走一层。" at={790} />
         </Beat>
       </TextBlock>
     </SceneShell>

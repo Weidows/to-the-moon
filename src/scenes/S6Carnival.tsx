@@ -1,11 +1,11 @@
 import React from 'react';
 import {C} from '../theme';
 import {LAYERS} from '../timeline';
-import {SceneShell, TextBlock} from '../components/SceneShell';
+import {SceneShell, TextBlock, Bridge} from '../components/SceneShell';
 import {Shot, Scrim, Flash} from '../components/Shot';
-import {Line, Quote, Beat} from '../components/Text';
+import {Line, Beat} from '../components/Text';
 
-/** LAYER 04 — the carnival night, where the two of them meet. */
+/** LAYER 04 — the summer they met. */
 export const CarnivalScene: React.FC<{durationInFrames: number}> = ({durationInFrames}) => (
   <SceneShell
     durationInFrames={durationInFrames}
@@ -34,27 +34,24 @@ export const CarnivalScene: React.FC<{durationInFrames: number}> = ({durationInF
       </>
     }
   >
-    <Flash from={308} peak={326} to={360} max={0.22} />
-    <Flash from={680} peak={698} to={732} max={0.18} />
+    <Flash from={308} peak={326} to={360} max={0.18} />
+    <Flash from={680} peak={698} to={732} max={0.14} />
 
     <TextBlock>
       <Beat from={18} until={320}>
-        <Line text="那年的狂欢节，灯火通明。" at={20} type />
-        <Line text="他躲开人群，一个人去看星星。" at={110} color="rgba(233,238,248,0.82)" />
+        <Line text="再往下，是八岁那年的夏天。" at={20} type />
+        <Line text="镇上的狂欢节，灯火通明。" at={112} color="rgba(233,238,248,0.82)" />
       </Beat>
 
       <Beat from={320} until={690}>
-        <Line text="脚步声。一个小女孩站在他身后。" at={322} />
-        <Line text="「你占了属于我的位置。」" at={400} color={C.moon} />
+        <Line text="John 躲开人群，一个人去看星星。" at={322} />
+        <Line text="草地上，已经坐着一个人。" at={424} color="rgba(233,238,248,0.82)" />
+        <Line text="「你占了属于我的位置。」" at={520} color={C.moon} />
       </Beat>
 
       <Beat from={690}>
-        <Line text="于是他们并排坐下。" at={692} type />
-        <Quote
-          lines={['从名字聊到星星，', '从星星，聊到兔子。']}
-          at={760}
-          cps={13}
-        />
+        <Line text="那一晚，他们一直看到天亮。" at={692} />
+        <Bridge text="女孩问了他一个问题。" at={800} />
       </Beat>
     </TextBlock>
   </SceneShell>

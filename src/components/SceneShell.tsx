@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, Easing, useCurrentFrame} from 'remotion';
-import {C, snap} from '../theme';
+import {C, PIXEL, snap} from '../theme';
 import {useLayout} from '../layout';
 import {Eyebrow} from './Text';
 import type {LayerTag} from '../timeline';
@@ -57,6 +57,13 @@ export const ChapterHeader: React.FC<{layer: LayerTag; at?: number}> = ({layer, 
   );
 };
 
+/**
+ * Chapter body.
+ * The old version opened every layer out of a black circle, which cut the film
+ * into ten islands. Now the incoming art rises into place while the outgoing
+ * art lifts away, and the shared starfield shows between them, so changing a
+ * layer reads as one continuous descent instead of a cut to black.
+ */
 export const SceneShell: React.FC<{
   durationInFrames: number;
   layer: LayerTag | null;
@@ -66,13 +73,13 @@ export const SceneShell: React.FC<{
   exit?: number;
   header?: boolean;
   headerAt?: number;
-}> = ({durationInFrames, layer, art, children, enter = 18, exit = 16, header = true, headerAt = 10}) => {
+}> = ({durationInFrames, layer, art, children, enter = 16, exit = 14, header = true, headerAt = 10}) => {
   const frame = useCurrentFrame();
 
   const p = interpolate(frame, [0, enter], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
-    easing: Easing.inOut(Easing.cubic),
+    easing: ease,
   });
   const exitP = interpolate(frame, [durationInFrames - exit, durationInFrames - 1], [0, 1], {
     extrapolateLeft: 'clamp',
@@ -80,20 +87,26 @@ export const SceneShell: React.FC<{
     easing: Easing.in(Easing.cubic),
   });
 
-  // The camera keeps falling: incoming art settles from a zoom, outgoing art
-  // rushes past the lens while the next iris opens.
-  const artScale = (1 + (1 - p) * 0.16) * (1 + exitP * 0.3);
+  // Narration clears out a beat before the art does, so the incoming chapter
+  // never has to share the screen with the outgoing chapter's last line.
+  const textOut = interpolate(frame, [durationInFrames - exit - 10, durationInFrames - 5], [1, 0], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  });
+
+  const y = interpolate(p, [0, 1], [2.6, 0]) + interpolate(exitP, [0, 1], [0, -3.4]);
+  const blur = interpolate(p, [0, 1], [5, 0]) + interpolate(exitP, [0, 1], [0, 4]);
+  const scale = 1 + (1 - p) * 0.045 + exitP * 0.05;
 
   return (
-    <AbsoluteFill
-      style={{
-        opacity: 1 - exitP,
-        clipPath: `circle(${p * 152}% at 50% 50%)`,
-      }}
-    >
-      <AbsoluteFill style={{scale: String(artScale)}}>{art}</AbsoluteFill>
-      {header && layer ? <ChapterHeader layer={layer} at={headerAt} /> : null}
-      {children}
+    <AbsoluteFill style={{opacity: interpolate(p, [0, 1], [0.55, 1]) * (1 - exitP)}}>
+      <AbsoluteFill style={{translate: `0px ${y}%`, filter: `blur(${blur}px)`, scale: String(scale)}}>
+        {art}
+      </AbsoluteFill>
+      <AbsoluteFill style={{opacity: textOut}}>
+        {header && layer ? <ChapterHeader layer={layer} at={headerAt} /> : null}
+        {children}
+      </AbsoluteFill>
     </AbsoluteFill>
   );
 };
@@ -115,6 +128,44 @@ export const TextBlock: React.FC<{children: React.ReactNode; style?: React.CSSPr
       }}
     >
       {children}
+    </div>
+  );
+};
+
+/**
+ * The hand-off line that closes a layer by naming the next question.
+ * Every chapter ends on one, so the film advances by cause instead of by cut.
+ */
+export const Bridge: React.FC<{text: string; at: number}> = ({text, at}) => {
+  const layout = useLayout();
+  const frame = useCurrentFrame();
+  const p = interpolate(frame, [at, at + 20], [0, 1], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+    easing: ease,
+  });
+
+  return (
+    <div
+      style={{
+        opacity: p,
+        translate: `0px ${interpolate(p, [0, 1], [10, 0])}px`,
+        marginTop: layout.bodySize * 0.85,
+        borderLeft: '2px solid rgba(255,214,146,0.42)',
+        paddingLeft: Math.round(layout.bodySize * 0.52),
+      }}
+    >
+      <div
+        style={{
+          fontFamily: PIXEL,
+          fontSize: snap(layout.bodySize * 0.68),
+          color: 'rgba(255,214,146,0.74)',
+          letterSpacing: 2,
+          lineHeight: 1.7,
+        }}
+      >
+        {text}
+      </div>
     </div>
   );
 };

@@ -7,9 +7,8 @@ import {Line, Beat} from '../components/Text';
 
 /**
  * LAYER 07 — the choice.
- * The wish is a childhood promise. To grant it they must take River out of his
- * life. The two doctors fight, and Eve finds the third way: not deletion, but
- * letting the two children walk past each other.
+ * Now that the cause is known, so is the price: to grant the wish, River has to
+ * go. The two doctors fight, and the answer is not deletion but absence.
  */
 export const ChoiceScene: React.FC<{durationInFrames: number}> = ({durationInFrames}) => (
   <SceneShell
@@ -31,22 +30,22 @@ export const ChoiceScene: React.FC<{durationInFrames: number}> = ({durationInFra
       </>
     }
   >
-    <Flash from={560} peak={580} to={620} max={0.26} />
+    <Flash from={560} peak={580} to={620} max={0.22} />
 
     <TextBlock>
-      <Beat from={16} until={300}>
-        <Line text="去月球的愿望，来自一个约定。" at={18} type />
-        <Line text="药抹掉了它，它却长成了执念。" at={112} color="rgba(233,238,248,0.82)" />
+      <Beat from={16} until={260}>
+        <Line text="现在，他们知道了原因。" at={18} type />
+        <Line text="也就知道了代价。" at={122} color="rgba(233,238,248,0.82)" />
       </Beat>
 
-      <Beat from={300} until={560}>
-        <Line text="要满足这个愿望，就得拿掉 River。" at={302} />
-        <Line text="两个博士在记忆深处，吵了起来。" at={392} color="rgba(233,238,248,0.82)" />
+      <Beat from={260} until={540}>
+        <Line text="要让他去月球，就得把 River 从他的人生里拿掉。" at={262} />
+        <Line text="两个博士在记忆深处，吵了起来。" at={420} color="rgba(233,238,248,0.84)" />
       </Beat>
 
-      <Beat from={560}>
-        <Line text="最后，是伊娃做了决定。" at={562} />
-        <Line text="她没有删掉 River。" at={644} color={C.gold} />
+      <Beat from={540}>
+        <Line text="最后，她做了另一个选择。" at={542} />
+        <Line text="她没有删掉 River。" at={630} color={C.gold} />
         <Line text="她只是让小时候的他们，错过了彼此。" at={706} color="rgba(233,238,248,0.86)" />
       </Beat>
     </TextBlock>

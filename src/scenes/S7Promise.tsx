@@ -2,18 +2,11 @@ import React from 'react';
 import {C, PIXEL, snap} from '../theme';
 import {useLayout} from '../layout';
 import {LAYERS} from '../timeline';
-import {SceneShell, TextBlock} from '../components/SceneShell';
+import {SceneShell, TextBlock, Bridge} from '../components/SceneShell';
 import {Shot, Scrim, Flash} from '../components/Shot';
-import {Quote, Beat, Appear} from '../components/Text';
+import {Quote, Line, Beat, Appear} from '../components/Text';
 
-const STARS_LINES = [
-  '「我一直以为，天上的星星是灯塔。」',
-  '「成千上万座，镶嵌在遥远的天际。」',
-  '「它们离得太远，听不见彼此的声音。」',
-  '「它们只能做一件事：绽放自己的光。」',
-];
-
-/** LAYER 05 — the promise: meet me on the moon. */
+/** LAYER 05 — the promise. This is the origin of the wish. */
 export const PromiseScene: React.FC<{durationInFrames: number}> = ({durationInFrames}) => {
   const layout = useLayout();
   return (
@@ -43,31 +36,32 @@ export const PromiseScene: React.FC<{durationInFrames: number}> = ({durationInFr
         </>
       }
     >
-      <Flash from={398} peak={416} to={450} max={0.2} />
+      <Flash from={398} peak={416} to={450} max={0.16} />
 
       <TextBlock>
-        <Beat from={16} until={400}>
-          <Quote lines={STARS_LINES} at={20} gap={58} cps={13} size={snap(layout.quoteSize * 0.78)} />
-        </Beat>
-
-        <Beat from={400} until={720}>
+        <Beat from={16} until={360}>
           <Quote
             lines={['「如果走丢了，或者忘记了，怎么办？」']}
-            at={404}
-            cps={15}
-            size={snap(layout.quoteSize * 0.82)}
+            at={20}
+            cps={14}
+            size={snap(layout.quoteSize * 0.86)}
           />
         </Beat>
 
-        <Beat from={720}>
+        <Beat from={360} until={700}>
           <Quote
-            lines={['「那我们总会在月亮上相遇的，傻瓜。」', '「就在小兔子的肚子那里。」']}
-            at={724}
-            gap={54}
-            cps={12}
-            size={snap(layout.quoteSize * 0.82)}
+            lines={['「那我们总会在月亮上相遇的，傻瓜。」']}
+            at={364}
+            cps={13}
+            size={snap(layout.quoteSize * 0.86)}
           />
-          <Appear at={900} dur={22} style={{marginTop: layout.bodySize * 0.9}}>
+          <Quote
+            lines={['「就在小兔子的肚子那里。」']}
+            at={504}
+            cps={13}
+            size={snap(layout.quoteSize * 0.78)}
+          />
+          <Appear at={604} dur={20} style={{marginTop: layout.bodySize * 0.5}}>
             <div
               style={{
                 fontFamily: PIXEL,
@@ -76,9 +70,14 @@ export const PromiseScene: React.FC<{durationInFrames: number}> = ({durationInFr
                 letterSpacing: 3,
               }}
             >
-              那年，他们都没有意识到，这句话会被记一辈子。
+              那天晚上，他们把这个约定说了很多遍。
             </div>
           </Appear>
+        </Beat>
+
+        <Beat from={700}>
+          <Line text="这就是 John 想去月球的原因。" at={704} color={C.gold} />
+          <Bridge text="可他从来没有想起来过。" at={790} />
         </Beat>
       </TextBlock>
     </SceneShell>

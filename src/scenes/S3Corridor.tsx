@@ -1,94 +1,55 @@
 import React from 'react';
-import {C, PIXEL, snap} from '../theme';
-import {useLayout} from '../layout';
+import {C} from '../theme';
 import {LAYERS} from '../timeline';
-import {SceneShell, TextBlock} from '../components/SceneShell';
+import {SceneShell, TextBlock, Bridge} from '../components/SceneShell';
 import {Shot, Scrim, Flash} from '../components/Shot';
-import {Line, Beat, Appear, TypeText, Quote} from '../components/Text';
+import {Line, Beat} from '../components/Text';
 
-const MEMENTOS = ['鸭嘴兽', '双色纸兔', '腌橄榄', '旧雨伞'];
+/**
+ * LAYER 01 — the attempt.
+ * They try the obvious fix, it fails three times, and every failure points at
+ * the same person. That failure is what makes the descent necessary.
+ */
+export const CorridorScene: React.FC<{durationInFrames: number}> = ({durationInFrames}) => (
+  <SceneShell
+    durationInFrames={durationInFrames}
+    layer={LAYERS[1]}
+    art={
+      <>
+        <Shot
+          src="img/gen_memento.jpg"
+          to={300}
+          zoom={[1.16, 1.02]}
+          focus={[0.5, 0.5]}
+          fadeIn={10}
+          fadeOut={18}
+        />
+        <Shot src="img/memory_tunnel.jpg" from={280} to={640} zoom={[1.06, 1.16]} focus={[0.5, 0.5]} />
+        <Shot src="img/timeline_cliff.jpg" from={610} pixel zoom={[1.24, 1.1]} focus={[0.5, 0.575]} />
+        <Scrim height="64%" />
+      </>
+    }
+  >
+    <Flash from={280} peak={300} to={336} max={0.2} />
+    <Flash from={610} peak={628} to={664} max={0.16} />
 
-const MementoRow: React.FC<{at: number}> = ({at}) => {
-  const layout = useLayout();
-  return (
-    <div style={{display: 'flex', gap: Math.round(layout.bodySize * 0.55), marginTop: layout.bodySize * 0.6}}>
-      {MEMENTOS.map((m, i) => (
-        <Appear key={m} at={at + i * 12} dur={14}>
-          <div
-            style={{
-              fontFamily: PIXEL,
-              fontSize: snap(layout.bodySize * 0.72),
-              color: C.aqua,
-              border: `1px solid rgba(142,215,255,0.35)`,
-              padding: `${Math.round(layout.bodySize * 0.2)}px ${Math.round(
-                layout.bodySize * 0.34,
-              )}px`,
-              letterSpacing: 2,
-              background: 'rgba(8,20,42,0.55)',
-            }}
-          >
-            {m}
-          </div>
-        </Appear>
-      ))}
-    </div>
-  );
-};
+    <TextBlock>
+      <Beat from={20} until={300}>
+        <Line text="第一件事，是把愿望直接写进去。" at={22} type />
+        <Line text="让年轻时的 John，成为一个想去月球的人。" at={122} color="rgba(233,238,248,0.82)" />
+      </Beat>
 
-/** LAYER 01 — the corridor of memory fragments. */
-export const CorridorScene: React.FC<{durationInFrames: number}> = ({durationInFrames}) => {
-  const layout = useLayout();
-  return (
-    <SceneShell
-      durationInFrames={durationInFrames}
-      layer={LAYERS[1]}
-      art={
-        <>
-          <Shot
-            src="img/gen_memento.jpg"
-            to={300}
-            zoom={[1.16, 1.02]}
-            focus={[0.5, 0.5]}
-            fadeIn={10}
-            fadeOut={18}
-          />
-          <Shot src="img/memory_tunnel.jpg" from={280} to={640} zoom={[1.06, 1.16]} focus={[0.5, 0.5]} />
-          <Shot src="img/timeline_cliff.jpg" from={610} pixel zoom={[1.24, 1.1]} focus={[0.5, 0.575]} />
-          <Scrim height="64%" />
-        </>
-      }
-    >
-      <Flash from={280} peak={300} to={336} max={0.28} />
-      <Flash from={610} peak={628} to={664} max={0.22} />
+      <Beat from={300} until={620}>
+        <Line text="他们试了三次。" at={302} />
+        <Line text="三次，都被记忆推回原地。" at={372} color="rgba(233,238,248,0.82)" />
+        <Line text="每一次，画面里都有同一个女人。" at={480} color={C.aqua} />
+      </Beat>
 
-      <TextBlock>
-        <Beat from={20} until={300}>
-          <Line text="记忆不会消失，它只是被折叠起来。" at={22} type />
-          <Line text="他们靠「记忆碎片」往下沉——" at={120} color="rgba(233,238,248,0.82)" />
-          <MementoRow at={170} />
-        </Beat>
-
-        <Beat from={300} until={620}>
-          <Line text="他们先把约翰改成一个想去月球的人。" at={302} />
-          <Line text="试了三次，三次都被记忆推回原地。" at={392} color="rgba(233,238,248,0.82)" />
-          <Line text="线索全都指向同一个名字：River。" at={494} color={C.aqua} />
-        </Beat>
-
-        <Beat from={620}>
-          <div
-            style={{
-              fontFamily: PIXEL,
-              fontSize: snap(layout.bodySize * 0.86),
-              color: C.mist,
-              letterSpacing: 2,
-              marginBottom: layout.bodySize * 0.7,
-            }}
-          >
-            <TypeText text="每深一层，约翰就年轻一点。" at={622} cps={16} />
-          </div>
-          <Quote lines={['「我们走吧。下面是雨夜。」']} at={700} cps={12} />
-        </Beat>
-      </TextBlock>
-    </SceneShell>
-  );
-};
+      <Beat from={620}>
+        <Line text="她叫 River。" at={622} color={C.gold} />
+        <Line text="是 John 两年前去世的妻子。" at={694} color="rgba(233,238,248,0.82)" />
+        <Bridge text="John 的愿望，长在她身上。" at={770} />
+      </Beat>
+    </TextBlock>
+  </SceneShell>
+);

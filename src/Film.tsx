@@ -32,16 +32,18 @@ const SCENE_MAP: Record<string, React.FC<{durationInFrames: number}>> = {
 
 const LABEL: Record<string, string> = {
   prologue: '序 · 月与灯塔',
-  now: '00 现在',
-  corridor: '01 记忆回廊',
+  now: '00 委托',
+  corridor: '01 尝试',
   lighthouse: '02 灯塔',
-  rabbit: '03 折纸兔',
-  carnival: '04 狂欢节',
+  rabbit: '03 兔子',
+  carnival: '04 初见',
   promise: '05 约定',
-  sealed: '06 封存',
+  sealed: '06 迷雾',
   choice: '07 抉择',
   moon: '终章 · 我们的月球',
 };
+
+const OVERLAP = 8;
 
 /** Shared film body — rendered at 16:9 and 9:16 by the two compositions. */
 export const Film: React.FC = () => {
@@ -51,10 +53,14 @@ export const Film: React.FC = () => {
     <AbsoluteFill style={{backgroundColor: C.ink, fontFamily: 'Zpix, monospace'}}>
       <Starfield opacity={0.95} />
 
-      {SEGMENTS.map((seg) => {
+      {SEGMENTS.map((seg, i) => {
         const Scene = SCENE_MAP[seg.id];
-        const from = Math.round(seg.from * fps);
-        const dur = Math.round((seg.to - seg.from) * fps);
+        // Neighbouring layers overlap so one dissolves into the next instead of
+        // every cut passing through a black frame.
+        const nominalFrom = Math.round(seg.from * fps);
+        const nominalTo = Math.round(seg.to * fps);
+        const from = Math.max(0, nominalFrom - (i === 0 ? 0 : OVERLAP));
+        const dur = nominalTo - nominalFrom + (i === 0 || i === SEGMENTS.length - 1 ? OVERLAP : OVERLAP * 2);
         return (
           <Sequence key={seg.id} from={from} durationInFrames={dur} name={LABEL[seg.id]}>
             <Scene durationInFrames={dur} />

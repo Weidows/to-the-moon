@@ -1,11 +1,15 @@
 import React from 'react';
 import {C} from '../theme';
 import {LAYERS} from '../timeline';
-import {SceneShell, TextBlock} from '../components/SceneShell';
+import {SceneShell, TextBlock, Bridge} from '../components/SceneShell';
 import {Shot, Scrim} from '../components/Shot';
 import {Line, Quote, Beat} from '../components/Text';
 
-/** LAYER 00 — the present: a commission, a coma, a wish. */
+/**
+ * LAYER 00 — the commission.
+ * Establishes the rule of the technology and the one thing nobody can answer:
+ * why the moon.
+ */
 export const NowScene: React.FC<{durationInFrames: number}> = ({durationInFrames}) => (
   <SceneShell
     durationInFrames={durationInFrames}
@@ -28,37 +32,23 @@ export const NowScene: React.FC<{durationInFrames: number}> = ({durationInFrames
   >
     <TextBlock>
       <Beat from={16} until={250}>
-        <Line text="人生构建机构，接到了一份委托。" at={18} type />
-        <Line
-          text="他们不实现愿望，只把愿望写进记忆。"
-          at={96}
-          color="rgba(233,238,248,0.82)"
-        />
+        <Line text="有一家机构，专门帮人改写记忆。" at={18} type />
+        <Line text="但这项技术，只能用在临终的人身上。" at={112} color="rgba(233,238,248,0.82)" />
       </Beat>
 
-      <Beat from={248} until={470}>
-        <Line text="所以，这份工作只能交给临终的人。" at={250} />
-        <Line
-          text="房间在海边。一台机器，一位昏睡的老人。"
-          at={320}
-          color="rgba(233,238,248,0.82)"
-        />
+      <Beat from={250} until={560}>
+        <Line text="他们接到的委托是——" at={252} />
+        <Line text="让 John 去一次月球。" at={312} color={C.gold} />
+        <Line text="可问他为什么，他说不上来。" at={430} color="rgba(233,238,248,0.8)" />
       </Beat>
 
-      <Beat from={470} until={700}>
-        <Line text="他叫约翰。工匠，寡言。" at={472} />
-        <Line text="妻子两年前去世了。" at={528} color="rgba(233,238,248,0.82)" />
-        <Line
-          text="墙上挂着四幅画：灯塔、兔子、鸭嘴兽。"
-          at={588}
-          color={C.mist}
-        />
+      <Beat from={560} until={760}>
+        <Quote lines={['「去月球。」']} at={562} cps={11} />
+        <Line text="那是他唯一说得出的愿望。" at={650} color={C.mist} />
       </Beat>
 
-      <Beat from={700}>
-        <Line text="「他有什么愿望？」" at={702} color={C.mist} type />
-        <Quote lines={['「去月球。他想去月球。」']} at={756} cps={11} />
-        <Line text="可问他为什么，他自己也说不上来。" at={838} color="rgba(233,238,248,0.72)" />
+      <Beat from={760}>
+        <Bridge text="要弄明白，只能进他的记忆里看。" at={764} />
       </Beat>
     </TextBlock>
   </SceneShell>

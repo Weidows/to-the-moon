@@ -11,7 +11,7 @@ import {Glow} from '../components/FilmOverlay';
 const CREDITS = [
   ['原作', 'To the Moon — Freebird Games (2011)'],
   ['音乐', 'For River — Kan Gao'],
-  ['剧情参考', '万字诠释神作《去月球》讲了什么'],
+  ['剧情', '据《去月球》主线剧情整理'],
   ['声明', '同人致敬作品 · 素材版权归原作者所有'],
 ];
 
@@ -93,9 +93,9 @@ const EndCard: React.FC = () => {
                 lineHeight: 1.9,
               }}
             >
-              爱，其实很简单。
+              约定不会消失。
               <br />
-              有时候，一句「我喜欢你」，就已经足够。
+              它只是在等一个人，重新想起来。
             </div>
           </Appear>
 
@@ -149,9 +149,12 @@ const EndCard: React.FC = () => {
   );
 };
 
-/** Finale — the rocket, the moon, and the last line. */
+/**
+ * Finale — the rewritten life, the reunion, the ship.
+ * This is the payoff of every earlier question: the wish came from a promise,
+ * the promise came from the summer, and the summer was taken away.
+ */
 export const MoonScene: React.FC<{durationInFrames: number}> = ({durationInFrames}) => {
-  const layout = useLayout();
   const frame = useCurrentFrame();
   const fadeOut = interpolate(frame, [durationInFrames - 46, durationInFrames - 4], [0, 1], {
     extrapolateLeft: 'clamp',
@@ -163,7 +166,7 @@ export const MoonScene: React.FC<{durationInFrames: number}> = ({durationInFrame
       durationInFrames={durationInFrames}
       layer={null}
       header={false}
-      enter={30}
+      enter={24}
       exit={10}
       art={
         <>
@@ -177,21 +180,20 @@ export const MoonScene: React.FC<{durationInFrames: number}> = ({durationInFrame
             brightness={1.05}
           />
           <Shot src="img/gen_nasa.jpg" from={260} to={500} zoom={[1.03, 1.12]} focus={[0.5, 0.5]} />
-          <Shot src="img/gen_piano.jpg" from={480} to={710} zoom={[1.02, 1.12]} focus={[0.5, 0.52]} />
-          <Shot src="img/gen_cabin.jpg" from={690} to={900} zoom={[1.03, 1.13]} focus={[0.5, 0.5]} />
-          <Shot src="img/launching.jpg" from={880} to={1040} zoom={[1.02, 1.14]} focus={[0.5, 0.5]} />
+          <Shot src="img/gen_cabin.jpg" from={480} to={720} zoom={[1.03, 1.13]} focus={[0.5, 0.5]} />
+          <Shot src="img/launching.jpg" from={700} to={900} zoom={[1.02, 1.14]} focus={[0.5, 0.5]} />
           <Shot
             mode="full"
             src="img/silhouettes_moon.jpg"
-            from={1000}
-            to={1160}
+            from={880}
+            to={1080}
             zoom={[1.02, 1.1]}
             focus={[0.44, 0.44]}
           />
           <Shot
             mode="full"
             src="img/deep_space.jpg"
-            from={1100}
+            from={1040}
             zoom={[1.0, 1.08]}
             focus={[0.5, 0.5]}
             brightness={0.44}
@@ -202,24 +204,20 @@ export const MoonScene: React.FC<{durationInFrames: number}> = ({durationInFrame
         </>
       }
     >
-      <Flash from={258} peak={276} to={316} max={0.3} />
-      <Flash from={688} peak={706} to={744} max={0.26} />
-      <Flash from={1098} peak={1116} to={1160} max={0.24} />
+      <Flash from={258} peak={276} to={316} max={0.26} />
+      <Flash from={698} peak={716} to={754} max={0.22} />
+      <Flash from={1038} peak={1056} to={1100} max={0.2} />
 
       <TextBlock>
         <Beat from={16} until={250}>
-          <Line text="记忆改写成功。" at={18} type />
-          <Line text="青年的约翰，考进了航天中心。" at={104} color="rgba(233,238,248,0.82)" />
+          <Line text="记忆重新长了一遍。" at={18} type />
+          <Line text="John 考进了航天中心。" at={106} color="rgba(233,238,248,0.82)" />
         </Beat>
 
-        <Beat from={250} until={490}>
-          <Line text="在那里，他遇见了 River。" at={252} />
-          <Line text="奇迹般的，他们再一次相爱。" at={356} color={C.gold} />
-        </Beat>
-
-        <Beat from={490} until={700}>
-          <Line text="钢琴房里传来一首曲子。" at={492} color={C.mist} />
-          <Quote lines={['「这首叫什么？」', '「《For River》。」']} at={546} gap={48} cps={10} />
+        <Beat from={250} until={700}>
+          <Line text="在那里，他遇见了一个女人。" at={252} />
+          <Quote lines={['「我们是不是见过？」']} at={356} cps={12} />
+          <Line text="这一次，他们没有走散。" at={500} color={C.gold} />
         </Beat>
 
         <Beat from={700} until={890}>
