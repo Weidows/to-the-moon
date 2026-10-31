@@ -215,7 +215,7 @@ export const MoonScene: React.FC<{durationInFrames: number}> = ({durationInFrame
         </Beat>
 
         <Beat from={250} until={700}>
-          <Line text="在那里，他遇见了一个女人。" at={252} />
+          <Line text="在那里，John 遇见了一个女人。" at={252} />
           <Quote lines={['「我们是不是见过？」']} at={356} cps={12} />
           <Line text="这一次，他们没有走散。" at={500} color={C.gold} />
         </Beat>
@@ -227,7 +227,7 @@ export const MoonScene: React.FC<{durationInFrames: number}> = ({durationInFrame
 
         <Beat from={890} until={1090}>
           <Line text="月球越来越近。" at={892} type />
-          <Line text="心跳，一点一点慢下来。" at={982} color={C.moon} />
+          <Line text="John 的心跳，一点一点慢下来。" at={982} color={C.moon} />
         </Beat>
       </TextBlock>
 
