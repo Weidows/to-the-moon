@@ -150,4 +150,4 @@ John 考进了航天中心。
 ## 同步状态
 
 `src/scenes` 与本文稿已逐行对齐（2026-10-31），改文案时两边一起改。
-校验脚本见 `remotion-projects` skill 的 `references/narration-script-editing.md`。
+改完跑 `python tools/check_script.py`，退出码 0 才算同步。
