@@ -90,6 +90,13 @@ MOSS-Image 重新画了 8 张 1792×1008 的像素插画：
 | `gen_clash.jpg` | 07 抉择 · 两位博士争执 | 原本没有图 |
 | `gen_miss.jpg` | 07 抉择 · 让童年错过彼此 | 原本没有图 |
 | `gen_cabin.jpg` | 终章 · 飞船舱内 | 原本没有图 |
+| `last_request.jpg` | 00 委托 · 临终病房，老人指向月亮 | 暗且带 HUD 的游戏截图 |
+| `machine.jpg` | 00 委托 · 记忆改写设备 | 官方截图 |
+| `tower_night.jpg` | 02 灯塔 · 雨夜 | 过暗的截图 |
+| `river.png` | 03 兔子 · 她坐在满屋折纸兔中间 | 官方立绘（分辨率低） |
+| `river_reading.jpg` | 03 兔子 · 最后那天举起一只兔子 | 官方截图 |
+| `kids_plane.jpg` | 04 初见 · 两个孩子躺在草地看银河 | 760px 小图 |
+| `deep_space.jpg` | 终章 · 深空月球（压暗到 44%） | 低清壁纸 |
 
 - 提示词：`tools/jobs/pl_*.json`（中文长句 + 统一风格尾巴 + 固定 seed，可直接改文案重跑）
 - 出图：`python tools/moss.py --job tools/jobs/pl_rain.json --out .tmp/moss`
@@ -97,6 +104,8 @@ MOSS-Image 重新画了 8 张 1792×1008 的像素插画：
   ＋ `CLIPLoader(qwen3.5_9b_w4a8_gptq, type=moss_image)` ＋ `flux2-vae_small`。
   原工作流里的 `SpectrumMOSSImageAdaptive` 加速节点本机没装（`custom_nodes` 里没有），
   脚本走的是不开加速的直连版本；装上后可以加回节点、步数降到 25。
+  单张 1792×1008 约 50 秒。
+- 落地：`python tools/to_web.py`（PNG → `public/img/*.jpg`，原图另存 `ref/generated/`）
 - 原图留在 `ref/generated/`，`public/img/` 里是压缩后的 JPEG。
 
 素材版权归 Freebird Games 所有，本片为非商业同人致敬作品。
