@@ -80,14 +80,14 @@ MOSS-Image 重新画了 18 张 1792×1008 的像素插画（下面这张表就�
 
 | 文件名 | 用在哪 | 替代了 |
 | --- | --- | --- |
-| `gen_hospital.jpg` | 00 现在 · 临终病房 | 暗且带 HUD 的游戏截图 |
-| `gen_memento.jpg` | 01 记忆回廊 · 满屋折纸兔 | 带英文弹窗的截图 |
+| `gen_hospital.jpg` | 00 委托 · 临终病房 | 暗且带 HUD 的游戏截图 |
+| `gen_memento.jpg` | 01 尝试 · 满屋折纸兔 | 带英文弹窗的截图 |
 | `gen_rain.jpg` | 02 灯塔 · 雨夜 | 过暗的雨夜截图 |
-| `gen_piano.jpg` | 03 / 07 · 钢琴房 | 空旷的暗色插画 |
-| `gen_carnival.jpg` | 04 狂欢节 | 760px 小图放大 |
-| `gen_void.jpg` | 06 封存 · 记忆虚空 | 昏暗难辨的截图 |
-| `gen_twins.jpg` | 06 封存 · 双胞胎卧室 | 原本没有图 |
-| `gen_nasa.jpg` | 07 改写 · NASA 大厅 | 原本没有图 |
+| `gen_piano.jpg` | 03 兔子 · 钢琴房 | 空旷的暗色插画 |
+| `gen_carnival.jpg` | 04 初见 · 狂欢节 | 760px 小图放大 |
+| `gen_void.jpg` | 06 迷雾 · 记忆虚空 | 昏暗难辨的截图 |
+| `gen_twins.jpg` | 06 迷雾 · 双胞胎卧室 | 原本没有图 |
+| `gen_nasa.jpg` | 终章 · 航天中心 | 原本没有图 |
 | `gen_clash.jpg` | 07 抉择 · 两位博士争执 | 原本没有图 |
 | `gen_miss.jpg` | 07 抉择 · 让童年错过彼此 | 原本没有图 |
 | `gen_cabin.jpg` | 终章 · 飞船舱内 | 原本没有图 |
