@@ -32,13 +32,13 @@ export const LighthouseScene: React.FC<{durationInFrames: number}> = ({durationI
 
     <TextBlock>
       <Beat from={18} until={330}>
-        <Line text="所以答案在她的记忆里。他们得进去看。" at={20} type />
-        <Line text="那层记忆在海边，白色灯塔的脚下。" at={124} color="rgba(233,238,248,0.82)" />
+        <Line text="所以要先回到有她的那一层。" at={20} type />
+        <Line text="那层记忆在海边，白色灯塔的脚下。他们在那儿住了很多年。" at={124} color="rgba(233,238,248,0.82)" />
       </Beat>
 
       <Beat from={330} until={660}>
-        <Line text="她话很少，只是不停地折纸。" at={332} />
-        <Line text="她去世后，John 一直住在那里。" at={500} color="rgba(233,238,248,0.8)" />
+        <Line text="她话很少。不说话的时候，她就折纸。" at={332} />
+        <Line text="她走了以后，John 一直住在那里，没搬过。" at={500} color="rgba(233,238,248,0.8)" />
       </Beat>
 
       <Beat from={660}>
@@ -48,7 +48,7 @@ export const LighthouseScene: React.FC<{durationInFrames: number}> = ({durationI
           gap={54}
           cps={12}
         />
-        <Bridge text="答案，要从一只折纸兔子说起。" at={812} />
+        <Bridge text="答案，在一只折纸兔子身上。" at={812} />
       </Beat>
     </TextBlock>
   </SceneShell>

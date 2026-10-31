@@ -73,18 +73,19 @@ export const RabbitScene: React.FC<{durationInFrames: number}> = ({durationInFra
         <Beat from={18} until={320}>
           <Line text="她折过成百上千只兔子。" at={20} type />
           <Line text="桌上、窗台、灯塔顶上，全是兔子。" at={110} color="rgba(233,238,248,0.8)" />
+          <Line text="每一只，都是她在等他想起来。" at={250} color="rgba(233,238,248,0.86)" />
         </Beat>
 
         <Beat from={320} until={660}>
-          <Line text="最后那天，她举着一只问 John：" at={322} color={C.mist} />
+          <Line text="最后那天，她举起一只：" at={322} color={C.mist} />
           <Quote lines={['「这是什么？」']} at={392} cps={12} />
           <Line text="「这是一只兔子。」" at={470} color={C.moon} />
-          <Line text="John 答对了名字，没答出它的含义。" at={556} color={C.mist} />
+          <Line text="名字他答对了。含义，他答不上来。" at={556} color={C.mist} />
         </Beat>
 
         <Beat from={660}>
-          <Line text="兔子是他们的暗号，指向一段被盖住的记忆。" at={662} />
-          <Bridge text="要找到那段记忆，得回到他们认识之前。" at={790} />
+          <Line text="这只兔子，她问过一遍又一遍。他一次也没答对。" at={662} />
+          <Bridge text="要答对，得回到他们刚认识那年。" at={790} />
         </Beat>
       </TextBlock>
     </SceneShell>

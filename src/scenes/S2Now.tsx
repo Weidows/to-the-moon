@@ -32,13 +32,13 @@ export const NowScene: React.FC<{durationInFrames: number}> = ({durationInFrames
   >
     <TextBlock>
       <Beat from={16} until={250}>
-        <Line text="John 快死了。他自己去不了。" at={18} type />
-        <Line text="有一家机构，能改写临终者的记忆。" at={112} color="rgba(233,238,248,0.82)" />
+        <Line text="John 的日子不多了。" at={18} type />
+        <Line text="有一家机构，能改写记忆，帮临终的人圆一个愿。" at={112} color="rgba(233,238,248,0.82)" />
       </Beat>
 
       <Beat from={250} until={560}>
-        <Line text="委托只有一句：让 John 去月球。" at={252} color={C.gold} />
-        <Line text="为什么，他说不上来。" at={430} color="rgba(233,238,248,0.8)" />
+        <Line text="他的委托只有一句：去月球。" at={252} color={C.gold} />
+        <Line text="可为什么是月球，他说不上来。这个念头，他揣了一辈子。" at={430} color="rgba(233,238,248,0.8)" />
       </Beat>
 
       <Beat from={560} until={760}>
@@ -46,7 +46,7 @@ export const NowScene: React.FC<{durationInFrames: number}> = ({durationInFrames
       </Beat>
 
       <Beat from={760}>
-        <Bridge text="想弄明白，只能进他的记忆里看。" at={764} />
+        <Bridge text="想弄明白，只能进他的记忆里，一层一层往回找。" at={764} />
       </Beat>
     </TextBlock>
   </SceneShell>

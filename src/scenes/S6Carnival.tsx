@@ -41,18 +41,18 @@ export const CarnivalScene: React.FC<{durationInFrames: number}> = ({durationInF
     <TextBlock>
       <Beat from={18} until={320}>
         <Line text="再往前，是八岁那年的夏天。" at={20} type />
-        <Line text="镇上的狂欢节，灯火通明。" at={112} color="rgba(233,238,248,0.82)" />
+        <Line text="镇上的狂欢节，灯火通明。人群里，他一个人往山上走。" at={112} color="rgba(233,238,248,0.82)" />
       </Beat>
 
       <Beat from={320} until={690}>
-        <Line text="John 躲开人群，一个人去看星星。" at={322} />
-        <Line text="草地上，已经坐着一个人。" at={424} color="rgba(233,238,248,0.82)" />
-        <Line text="「你坐了我的位置。」" at={520} color={C.moon} />
+        <Line text="草地上，已经坐着一个人。" at={322} />
+        <Line text="「你坐了我的位置。」" at={424} color="rgba(233,238,248,0.82)" />
+        <Line text="那一晚，他们并排躺着，看星星看到天亮。" at={520} color={C.moon} />
       </Beat>
 
       <Beat from={690}>
-        <Line text="那一晚，他们一直看到天亮。" at={692} />
-        <Bridge text="那个女孩，就是 River。她问：" at={800} />
+        <Line text="那个女孩，就是 River。" at={692} />
+        <Bridge text="那个问题，他忘不掉，也想不起来。" at={800} />
       </Beat>
     </TextBlock>
   </SceneShell>

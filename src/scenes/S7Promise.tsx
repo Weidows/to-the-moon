@@ -47,6 +47,7 @@ export const PromiseScene: React.FC<{durationInFrames: number}> = ({durationInFr
             cps={14}
             size={snap(layout.quoteSize * 0.86)}
           />
+          <Line text="问这句话的时候，她还不知道，他真的会忘。" at={200} color="rgba(233,238,248,0.86)" />
         </Beat>
 
         <Beat from={360} until={700}>
@@ -78,7 +79,7 @@ export const PromiseScene: React.FC<{durationInFrames: number}> = ({durationInFr
 
         <Beat from={700}>
           <Line text="所以 John 才想去月球。" at={704} color={C.gold} />
-          <Bridge text="可那段记忆，他进不去。" at={790} />
+          <Bridge text="可他忘了为什么。" at={790} />
         </Beat>
       </TextBlock>
     </SceneShell>
