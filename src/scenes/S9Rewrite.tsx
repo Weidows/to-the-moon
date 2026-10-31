@@ -35,12 +35,13 @@ export const ChoiceScene: React.FC<{durationInFrames: number}> = ({durationInFra
     <TextBlock>
       <Beat from={16} until={260}>
         <Line text="现在两位博士知道了原因，" at={18} type />
-        <Line text="也就知道了代价。" at={122} color="rgba(233,238,248,0.82)" />
+        <Line text="也就知道了，这件事没法两全。" at={122} color="rgba(233,238,248,0.82)" />
       </Beat>
 
       <Beat from={260} until={540}>
         <Line text="要让 John 去月球，就得把 River 从他的人生里拿掉。" at={262} />
-        <Line text="两位博士在记忆深处，吵了起来。" at={420} color="rgba(233,238,248,0.84)" />
+        <Line text="两位博士吵了起来。一个说，委托就是委托。" at={420} color="rgba(233,238,248,0.84)" />
+        <Line text="一个说，那是他最爱的人。" at={480} color="rgba(233,238,248,0.84)" />
       </Beat>
 
       <Beat from={540}>
