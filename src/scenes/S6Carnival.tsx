@@ -47,7 +47,7 @@ export const CarnivalScene: React.FC<{durationInFrames: number}> = ({durationInF
       <Beat from={320} until={690}>
         <Line text="John 躲开人群，一个人去看星星。" at={322} />
         <Line text="草地上，已经坐着一个人。" at={424} color="rgba(233,238,248,0.82)" />
-        <Line text="「你占了属于我的位置。」" at={520} color={C.moon} />
+        <Line text="「你坐了我的位置。」" at={520} color={C.moon} />
       </Beat>
 
       <Beat from={690}>

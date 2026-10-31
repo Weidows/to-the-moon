@@ -43,7 +43,7 @@ export const LighthouseScene: React.FC<{durationInFrames: number}> = ({durationI
 
       <Beat from={660}>
         <Quote
-          lines={['「有一天我也会走。', '到那时，谁来看我们呢？」']}
+          lines={['「有一天我也会走。', '到那时，谁陪你呢？」']}
           at={662}
           gap={54}
           cps={12}
