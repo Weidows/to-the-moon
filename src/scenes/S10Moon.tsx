@@ -93,9 +93,9 @@ const EndCard: React.FC = () => {
                 lineHeight: 1.9,
               }}
             >
-              约定不会消失。
+              他忘了约定。
               <br />
-              它只是在等一个人，重新想起来。
+              约定没有忘了他。
             </div>
           </Appear>
 
@@ -180,20 +180,20 @@ export const MoonScene: React.FC<{durationInFrames: number}> = ({durationInFrame
             brightness={1.05}
           />
           <Shot src="img/gen_nasa.jpg" from={260} to={500} zoom={[1.03, 1.12]} focus={[0.5, 0.5]} />
-          <Shot src="img/gen_cabin.jpg" from={480} to={720} zoom={[1.03, 1.13]} focus={[0.5, 0.5]} />
-          <Shot src="img/launching.jpg" from={700} to={900} zoom={[1.02, 1.14]} focus={[0.5, 0.5]} />
+          <Shot src="img/gen_cabin.jpg" from={480} to={830} zoom={[1.03, 1.13]} focus={[0.5, 0.5]} />
+          <Shot src="img/launching.jpg" from={806} to={1000} zoom={[1.02, 1.14]} focus={[0.5, 0.5]} />
           <Shot
             mode="full"
             src="img/silhouettes_moon.jpg"
-            from={880}
-            to={1080}
+            from={986}
+            to={1160}
             zoom={[1.02, 1.1]}
             focus={[0.44, 0.44]}
           />
           <Shot
             mode="full"
             src="img/deep_space.jpg"
-            from={1040}
+            from={1120}
             zoom={[1.0, 1.08]}
             focus={[0.5, 0.5]}
             brightness={0.44}
@@ -205,8 +205,8 @@ export const MoonScene: React.FC<{durationInFrames: number}> = ({durationInFrame
       }
     >
       <Flash from={258} peak={276} to={316} max={0.26} />
-      <Flash from={698} peak={716} to={754} max={0.22} />
-      <Flash from={1038} peak={1056} to={1100} max={0.2} />
+      <Flash from={804} peak={822} to={860} max={0.22} />
+      <Flash from={1118} peak={1136} to={1180} max={0.2} />
 
       <TextBlock>
         <Beat from={16} until={250}>
@@ -222,11 +222,11 @@ export const MoonScene: React.FC<{durationInFrames: number}> = ({durationInFrame
 
         <Beat from={700} until={890}>
           <Line text="他们并排坐在飞船上。" at={702} />
-          <Line text="窗外，月球越来越近。" at={800} color="rgba(233,238,248,0.82)" />
+          <Line text="火箭升空。" at={800} color="rgba(233,238,248,0.82)" />
         </Beat>
 
         <Beat from={890} until={1090}>
-          <Line text="火箭升空。" at={892} type />
+          <Line text="月球越来越近。" at={892} type />
           <Line text="心跳，一点一点慢下来。" at={982} color={C.moon} />
         </Beat>
       </TextBlock>

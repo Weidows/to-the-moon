@@ -76,7 +76,7 @@ export const PromiseScene: React.FC<{durationInFrames: number}> = ({durationInFr
         </Beat>
 
         <Beat from={700}>
-          <Line text="这就是 John 想去月球的原因。" at={704} color={C.gold} />
+          <Line text="所以他才想去月球。" at={704} color={C.gold} />
           <Bridge text="可他从来没有想起来过。" at={790} />
         </Beat>
       </TextBlock>

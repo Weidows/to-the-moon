@@ -35,19 +35,18 @@ export const CorridorScene: React.FC<{durationInFrames: number}> = ({durationInF
 
     <TextBlock>
       <Beat from={20} until={300}>
-        <Line text="第一件事，是把愿望直接写进去。" at={22} type />
-        <Line text="让年轻时的 John，成为一个想去月球的人。" at={122} color="rgba(233,238,248,0.82)" />
+        <Line text="他们先试了最直接的办法：把愿望写进去，" at={22} type />
+        <Line text="让年轻的 John 想去月球。" at={122} color="rgba(233,238,248,0.82)" />
       </Beat>
 
       <Beat from={300} until={620}>
-        <Line text="他们试了三次。" at={302} />
-        <Line text="三次，都被记忆推回原地。" at={372} color="rgba(233,238,248,0.82)" />
-        <Line text="每一次，画面里都有同一个女人。" at={480} color={C.aqua} />
+        <Line text="试了三次，三次都被推回原地。" at={302} />
+        <Line text="每次画面里，都有同一个女人。" at={480} color={C.aqua} />
       </Beat>
 
       <Beat from={620}>
         <Line text="她叫 River。" at={622} color={C.gold} />
-        <Line text="是 John 两年前去世的妻子。" at={694} color="rgba(233,238,248,0.82)" />
+        <Line text="John 的妻子，已经去世。" at={694} color="rgba(233,238,248,0.82)" />
         <Bridge text="John 的愿望，长在她身上。" at={770} />
       </Beat>
     </TextBlock>

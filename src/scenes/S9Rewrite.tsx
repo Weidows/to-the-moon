@@ -34,8 +34,7 @@ export const ChoiceScene: React.FC<{durationInFrames: number}> = ({durationInFra
 
     <TextBlock>
       <Beat from={16} until={260}>
-        <Line text="现在，他们知道了原因。" at={18} type />
-        <Line text="也就知道了代价。" at={122} color="rgba(233,238,248,0.82)" />
+        <Line text="现在他们知道了原因，也知道了代价。" at={18} type />
       </Beat>
 
       <Beat from={260} until={540}>

@@ -32,8 +32,8 @@ const FloatingRabbit: React.FC = () => {
 
 /**
  * LAYER 03 — the rabbit.
- * The wrong name is the clue: what he calls it belongs to a memory that was
- * taken away, so the only way forward is further down.
+ * He gets the name right and misses what it stands for. That gap is the clue,
+ * so the only way forward is further down.
  */
 export const RabbitScene: React.FC<{durationInFrames: number}> = ({durationInFrames}) => {
   const frame = useCurrentFrame();
@@ -76,14 +76,14 @@ export const RabbitScene: React.FC<{durationInFrames: number}> = ({durationInFra
         </Beat>
 
         <Beat from={320} until={660}>
-          <Line text="最后那天，她举着一只，问他：" at={322} color={C.mist} />
+          <Line text="最后那天，她举着一只问他：" at={322} color={C.mist} />
           <Quote lines={['「这是什么？」']} at={392} cps={12} />
           <Line text="「这是一只兔子。」" at={470} color={C.moon} />
-          <Line text="可那不是兔子。" at={556} color={C.mist} />
+          <Line text="他答对了名字，没答出那只兔子代表什么。" at={556} color={C.mist} />
         </Beat>
 
         <Beat from={660}>
-          <Line text="说错的名字，指向一段被盖住的记忆。" at={662} />
+          <Line text="那只兔子，指向一段被盖住的记忆。" at={662} />
           <Bridge text="他们决定再往下走一层。" at={790} />
         </Beat>
       </TextBlock>
