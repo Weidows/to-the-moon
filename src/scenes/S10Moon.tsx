@@ -210,7 +210,7 @@ export const MoonScene: React.FC<{durationInFrames: number}> = ({durationInFrame
 
       <TextBlock>
         <Beat from={16} until={250}>
-          <Line text="记忆重新长了一遍。" at={18} type />
+          <Line text="改过的记忆，从头长了一遍。" at={18} type />
           <Line text="John 考进了航天中心。" at={106} color="rgba(233,238,248,0.82)" />
         </Beat>
 
