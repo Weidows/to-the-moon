@@ -30,6 +30,7 @@ TARGETS = {
     "pl_kids_plane": "kids_plane.jpg",
     "pl_nasa_v2": "gen_nasa.jpg",
     "pl_deep_space": "deep_space.jpg",
+    "pl_starfield": "starfield_cliff.jpg",
 }
 
 WIDTH = 1792
