@@ -52,7 +52,7 @@ export const CarnivalScene: React.FC<{durationInFrames: number}> = ({durationInF
 
       <Beat from={690}>
         <Line text="那一晚，他们一直看到天亮。" at={692} />
-        <Bridge text="女孩问了 John 一个问题。" at={800} />
+        <Bridge text="那个女孩，就是 River。她问：" at={800} />
       </Beat>
     </TextBlock>
   </SceneShell>
