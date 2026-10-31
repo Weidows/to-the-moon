@@ -6,7 +6,8 @@
     "dev": "remotion studio",
     "render": "remotion render ToTheMoon out/to-the-moon.mp4",
     "render:vertical": "remotion render ToTheMoonVertical out/to-the-moon-vertical.mp4",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:script": "python tools/check_script.py"
   },
   "dependencies": {
     "@remotion/cli": "4.0.539",

@@ -16,7 +16,7 @@
 ```bash
 npm run dev                # Remotion Studio, http://localhost:3000
 npm run typecheck
-python tools/check_script.py   # 文稿与 src/scenes 的旁白是否同步
+npm run check:script           # 文稿与 src/scenes 的旁白是否同步
 npm run render             # 横版 → out/to-the-moon.mp4
 npm run render:vertical    # 竖版 → out/to-the-moon-vertical.mp4
 ```
