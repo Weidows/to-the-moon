@@ -32,8 +32,8 @@ export const LighthouseScene: React.FC<{durationInFrames: number}> = ({durationI
 
     <TextBlock>
       <Beat from={18} until={330}>
-        <Line text="所以他们先下到 River 这一层。" at={20} type />
-        <Line text="她住在海边，白色灯塔的脚下。" at={124} color="rgba(233,238,248,0.82)" />
+        <Line text="所以答案在她的记忆里。他们得进去看。" at={20} type />
+        <Line text="那层记忆在海边，白色灯塔的脚下。" at={124} color="rgba(233,238,248,0.82)" />
       </Beat>
 
       <Beat from={330} until={660}>

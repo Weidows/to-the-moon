@@ -32,8 +32,8 @@ export const NowScene: React.FC<{durationInFrames: number}> = ({durationInFrames
   >
     <TextBlock>
       <Beat from={16} until={250}>
-        <Line text="有一家机构，专门帮人改写记忆。" at={18} type />
-        <Line text="但只能用在临终的人身上。" at={112} color="rgba(233,238,248,0.82)" />
+        <Line text="John 快死了。他自己去不了。" at={18} type />
+        <Line text="有一家机构能改写记忆，但只能用在临终的人身上。" at={112} color="rgba(233,238,248,0.82)" />
       </Beat>
 
       <Beat from={250} until={560}>

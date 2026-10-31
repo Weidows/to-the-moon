@@ -84,7 +84,7 @@ export const RabbitScene: React.FC<{durationInFrames: number}> = ({durationInFra
 
         <Beat from={660}>
           <Line text="那只兔子，指向一段被盖住的记忆。" at={662} />
-          <Bridge text="两位博士决定再往下走一层。" at={790} />
+          <Bridge text="要找到那段记忆，得回到他们认识之前。" at={790} />
         </Beat>
       </TextBlock>
     </SceneShell>

@@ -34,7 +34,7 @@ export const SealedScene: React.FC<{durationInFrames: number}> = ({durationInFra
     <Flash from={320} peak={338} to={360} max={0.14} />
     <TextBlock>
       <Beat from={16} until={330}>
-        <Line text="童年的记忆像被雾堵住。" at={18} type />
+        <Line text="John 童年的记忆像被雾堵住。" at={18} type />
         <Line text="两位博士花了很久才挤进去。" at={112} color="rgba(233,238,248,0.82)" />
         <Line text="雾里，是两个一模一样的孩子。" at={228} color="rgba(233,238,248,0.82)" />
       </Beat>

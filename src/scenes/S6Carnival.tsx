@@ -40,7 +40,7 @@ export const CarnivalScene: React.FC<{durationInFrames: number}> = ({durationInF
 
     <TextBlock>
       <Beat from={18} until={320}>
-        <Line text="再往下，是八岁那年的夏天。" at={20} type />
+        <Line text="再往前，是八岁那年的夏天。" at={20} type />
         <Line text="镇上的狂欢节，灯火通明。" at={112} color="rgba(233,238,248,0.82)" />
       </Beat>
 
