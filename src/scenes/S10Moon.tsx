@@ -227,7 +227,7 @@ export const MoonScene: React.FC<{durationInFrames: number}> = ({durationInFrame
 
         <Beat from={890} until={1090}>
           <Line text="月球越来越近。" at={892} type />
-          <Line text="John 的心跳，一点一点慢下来。" at={982} color={C.moon} />
+          <Line text="John 的心跳，一点一点停下来。" at={982} color={C.moon} />
         </Beat>
       </TextBlock>
 

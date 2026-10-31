@@ -40,7 +40,7 @@ export const ChoiceScene: React.FC<{durationInFrames: number}> = ({durationInFra
 
       <Beat from={260} until={540}>
         <Line text="要让 John 去月球，就得把 River 从他的人生里拿掉。" at={262} />
-        <Line text="两个博士在记忆深处，吵了起来。" at={420} color="rgba(233,238,248,0.84)" />
+        <Line text="两位博士在记忆深处，吵了起来。" at={420} color="rgba(233,238,248,0.84)" />
       </Beat>
 
       <Beat from={540}>

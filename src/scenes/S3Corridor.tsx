@@ -36,7 +36,7 @@ export const CorridorScene: React.FC<{durationInFrames: number}> = ({durationInF
     <TextBlock>
       <Beat from={20} until={300}>
         <Line text="两位博士先试了最直接的办法：把愿望写进去，" at={22} type />
-        <Line text="让年轻的 John 想去月球。" at={122} color="rgba(233,238,248,0.82)" />
+        <Line text="让年轻的 John 想要去月球。" at={122} color="rgba(233,238,248,0.82)" />
       </Beat>
 
       <Beat from={300} until={620}>

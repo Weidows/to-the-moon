@@ -38,7 +38,7 @@ export const LighthouseScene: React.FC<{durationInFrames: number}> = ({durationI
 
       <Beat from={330} until={660}>
         <Line text="她话很少，只是不停地折纸。" at={332} />
-        <Line text="她走后，John 一直住在那里。" at={500} color="rgba(233,238,248,0.8)" />
+        <Line text="她去世后，John 一直住在那里。" at={500} color="rgba(233,238,248,0.8)" />
       </Beat>
 
       <Beat from={660}>
