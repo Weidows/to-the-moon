@@ -32,7 +32,7 @@ export const NowScene: React.FC<{durationInFrames: number}> = ({durationInFrames
   >
     <TextBlock>
       <Beat from={16} until={250}>
-        <Line text="John 的日子不多了" at={18} type />
+        <Line text="这是 John 的最后一晚" at={18} type />
         <Line text="有一家机构，能改写记忆，帮临终的人圆一个愿" at={112} color="rgba(233,238,248,0.82)" />
       </Beat>
 

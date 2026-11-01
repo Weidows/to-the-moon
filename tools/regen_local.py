@@ -16,20 +16,7 @@ OUT = ROOT / ".tmp" / "moss"
 NEG = "worst quality, bad anatomy, watermark, jpeg artifact, text, letters, logo, signature"
 
 # name -> seed（避开服务器时代的旧 seed 段 20261xxx，从 20261701 起）
-JOB_SEEDS = {
-    "pl_river": 20261701,
-    "pl_nasa_v2": 20261702,
-    "pl_river_reading": 20261703,
-    "pl_rain": 20261704,
-    "pl_kids_plane": 20261705,
-    "pl_first_meet": 20261706,
-    "pl_starfield": 20261707,
-    "pl_carnival": 20261708,
-    "pl_miss": 20261709,
-    "pl_hospital": 20261710,
-    "pl_last_request": 20261711,
-    "pl_cabin": 20261712,
-}
+JOB_SEEDS = json.loads((ROOT / "tools" / "jobs" / "regen_seeds.json").read_text(encoding="utf8"))
 
 
 def build(prompt, neg, seed, w=1792, hgt=1008, steps=30, cfg=2.5):
