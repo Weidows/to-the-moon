@@ -30,7 +30,6 @@ export const PromiseScene: React.FC<{durationInFrames: number}> = ({durationInFr
             pixel
             zoom={[1.06, 1.18]}
             focus={[0.5, 0.42]}
-            brightness={1.2}
           />
           <Shot src="img/stargazing.jpg" from={700} zoom={[1.03, 1.14]} focus={[0.5, 0.5]} />
           <Scrim height="58%" />
