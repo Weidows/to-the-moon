@@ -16,7 +16,7 @@ import pathlib
 import re
 import sys
 
-ROOT = pathlib.Path(__file__).resolve().parent.parent
+ROOT = pathlib.Path(__file__).resolve().parents[2]
 SCENES = ["S1Prologue", "S2Now", "S3Corridor", "S4Lighthouse", "S5Rabbit",
           "S6Carnival", "S7Promise", "S8Sealed", "S9Rewrite", "S10Moon"]
 
