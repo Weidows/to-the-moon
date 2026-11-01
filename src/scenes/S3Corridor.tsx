@@ -36,18 +36,19 @@ export const CorridorScene: React.FC<{durationInFrames: number}> = ({durationInF
     <TextBlock>
       <Beat from={20} until={300}>
         <Line text="两位博士先试了最直接的办法：" at={22} type />
-        <Line text="把「想去月球」写进他年轻时的念头里，一次一次地改。" at={122} color="rgba(233,238,248,0.82)" />
+        <Line text="把「想去月球」写进他的少年时代" at={122} color="rgba(233,238,248,0.82)" />
       </Beat>
 
       <Beat from={300} until={620}>
-        <Line text="改了三次，三次都被推回原地。" at={302} />
-        <Line text="每一次，画面里都站着同一个女人。" at={480} color={C.aqua} />
+        <Line text="改了三次，都被记忆推了回来" at={302} />
+        <Line text="每一次，人生里都站着同一个女人" at={480} color={C.aqua} />
       </Beat>
 
       <Beat from={620}>
-        <Line text="她叫 River。" at={622} color={C.gold} />
-        <Line text="John 的妻子，走了很多年。" at={694} color="rgba(233,238,248,0.82)" />
-        <Bridge text="他的愿望，长在她身上。" at={770} />
+        <Line text="她叫 River" at={622} color={C.gold} />
+        <Line text="John 的妻子，走了很多年" at={694} color="rgba(233,238,248,0.82)" />
+        <Line text="那段婚姻里，他欠她的，比记得的多" at={730} color="rgba(233,238,248,0.72)" />
+        <Bridge text="他的愿望，长在她身上" at={790} />
       </Beat>
     </TextBlock>
   </SceneShell>

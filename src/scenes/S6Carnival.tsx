@@ -22,13 +22,12 @@ export const CarnivalScene: React.FC<{durationInFrames: number}> = ({durationInF
           saturate={1.05}
         />
         <Shot
-          src="img/starfield_cliff.jpg"
+          src="img/gen_first_meet.jpg"
           from={308}
           to={700}
           pixel
           zoom={[1.18, 1.02]}
           focus={[0.5, 0.45]}
-          brightness={1.2}
         />
         <Shot src="img/kids_plane.jpg" from={680} zoom={[1.03, 1.14]} focus={[0.5, 0.5]} />
         <Scrim height="60%" />
@@ -40,19 +39,21 @@ export const CarnivalScene: React.FC<{durationInFrames: number}> = ({durationInF
 
     <TextBlock>
       <Beat from={18} until={320}>
-        <Line text="再往前，是八岁那年的夏天。" at={20} type />
-        <Line text="镇上的狂欢节，灯火通明。人群里，他一个人往山上走。" at={112} color="rgba(233,238,248,0.82)" />
+        <Line text="再往前，是八岁那年的夏天" at={20} type />
+        <Line text="镇上的狂欢节，灯火通明" at={112} color="rgba(233,238,248,0.82)" />
+        <Line text="人群里，只有他一个人往山上走" at={210} color="rgba(233,238,248,0.82)" />
       </Beat>
 
       <Beat from={320} until={690}>
-        <Line text="草地上，已经坐着一个人。" at={322} />
-        <Line text="「你坐了我的位置。」" at={424} color="rgba(233,238,248,0.82)" />
-        <Line text="那一晚，他们并排躺着，看星星看到天亮。" at={520} color={C.moon} />
+        <Line text="草地上，他一个人坐在山坡上" at={322} />
+        <Line text="身后传来一句" at={400} color="rgba(233,238,248,0.82)" />
+        <Line text="「你坐了我的位置」" at={470} color="rgba(233,238,248,0.82)" />
+        <Line text="那一晚，他们并排躺着，看星星看到天亮" at={560} color={C.moon} />
       </Beat>
 
       <Beat from={690}>
-        <Line text="那个女孩，就是 River。" at={692} />
-        <Bridge text="那个问题，他忘不掉，也想不起来。" at={800} />
+        <Line text="那个女孩，就是 River" at={692} />
+        <Bridge text="那个问题，他忘不掉，也想不起来" at={800} />
       </Beat>
     </TextBlock>
   </SceneShell>

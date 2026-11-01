@@ -34,7 +34,7 @@ BARE_RE = re.compile(r">\s*(那天晚上[^<]*)<")
 
 def norm(s):
     """Compare on meaning, not punctuation."""
-    return re.sub(r"[\s，。、！？：；「」·—…]", "", s)
+    return re.sub(r"[\s，。、！？：；「」·—…␤]", "", s)  # ␤ = doc-side manual break
 
 
 def scene_strings():
@@ -73,7 +73,7 @@ def doc_strings():
     out = []
     for ln in md.splitlines():
         s = ln.strip()
-        if not s or s.startswith(("#", "---", "按 ", "八层")):
+        if not s or s.startswith(("#", "---", "按 ", "八层", "暗线", "旁白一律")):
             continue
         s = re.sub(r"^\*\*▸\s*", "", s).replace("**", "").replace("> ", "").strip().strip("「」")
         if s and not s.startswith(CREDITS_PREFIX):

@@ -35,19 +35,24 @@ export const ChoiceScene: React.FC<{durationInFrames: number}> = ({durationInFra
     <TextBlock>
       <Beat from={16} until={260}>
         <Line text="现在两位博士知道了原因，" at={18} type />
-        <Line text="也知道了这件事有多残忍。" at={122} color="rgba(233,238,248,0.82)" />
+        <Line text="也知道了这件事有多残忍" at={122} color="rgba(233,238,248,0.82)" />
       </Beat>
 
-      <Beat from={260} until={540}>
-        <Line text="要让 John 去月球，就得把 River 从他的人生里删掉。" at={262} />
-        <Line text="一个说，委托就是委托。" at={420} color="rgba(233,238,248,0.84)" />
-        <Line text="一个说，那是他最爱的人。" at={480} color="rgba(233,238,248,0.84)" />
+      <Beat from={260} until={560}>
+        <Line text="要让 John 去月球，
+就得把 River 从他的人生里删掉" at={262} />
+        <Line text="一个说，委托就是委托" at={420} color="rgba(233,238,248,0.84)" />
+        <Line text="一个说，那是他最爱的人" at={480} color="rgba(233,238,248,0.84)" />
       </Beat>
 
-      <Beat from={540}>
-        <Line text="最后，女博士做了另一个选择。" at={542} />
-        <Line text="她没有删掉 River。" at={630} color={C.gold} />
-        <Line text="她只是让小时候的他们，错过了彼此。" at={706} color="rgba(233,238,248,0.86)" />
+      <Beat from={560} until={640}>
+        <Line text="删掉她，就等于他从未爱过" at={562} color="rgba(233,238,248,0.72)" />
+      </Beat>
+
+      <Beat from={640}>
+        <Line text="最后，女博士做了另一个选择" at={642} />
+        <Line text="她没有删掉 River" at={700} color={C.gold} />
+        <Line text="她只是让小时候的他们，错过了彼此" at={756} color="rgba(233,238,248,0.86)" />
       </Beat>
     </TextBlock>
   </SceneShell>

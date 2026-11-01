@@ -47,18 +47,18 @@ export const PromiseScene: React.FC<{durationInFrames: number}> = ({durationInFr
             cps={14}
             size={snap(layout.quoteSize * 0.86)}
           />
-          <Line text="问这句话的时候，她还不知道，他真的会忘。" at={200} color="rgba(233,238,248,0.86)" />
+          <Line text="问这句话的时候，她还不知道，他真的会忘" at={200} color="rgba(233,238,248,0.86)" />
         </Beat>
 
         <Beat from={360} until={700}>
           <Quote
-            lines={['「那我们总会在月亮上相遇的，傻瓜。」']}
+            lines={['「那我们总会在月亮上相遇的，傻瓜」']}
             at={364}
             cps={13}
             size={snap(layout.quoteSize * 0.86)}
           />
           <Quote
-            lines={['「就在小兔子的肚子那里。」']}
+            lines={['「就在小兔子的肚子那里」']}
             at={504}
             cps={13}
             size={snap(layout.quoteSize * 0.78)}
@@ -72,14 +72,14 @@ export const PromiseScene: React.FC<{durationInFrames: number}> = ({durationInFr
                 letterSpacing: 3,
               }}
             >
-              那天晚上，他们把这个约定说了很多遍。
+              那天晚上，他们把这个约定说了很多遍
             </div>
           </Appear>
         </Beat>
 
         <Beat from={700}>
-          <Line text="所以 John 才想去月球。" at={704} color={C.gold} />
-          <Bridge text="可他忘了为什么。" at={790} />
+          <Line text="所以 John 才想去月球" at={704} color={C.gold} />
+          <Bridge text="可他忘了为什么" at={790} />
         </Beat>
       </TextBlock>
     </SceneShell>

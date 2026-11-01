@@ -131,7 +131,8 @@ export const PrologueScene: React.FC<{durationInFrames: number}> = ({durationInF
               textShadow: '0 4px 30px rgba(0,0,0,0.9)',
             }}
           >
-            <TypeText text="「去月球。John 想去月球。」" at={330} cps={9} />
+            <TypeText text="「去月球
+John 想去月球」" at={330} cps={9} />
           </div>
           <Appear at={408} dur={22} style={{marginTop: layout.bodySize * 0.9}}>
             <div

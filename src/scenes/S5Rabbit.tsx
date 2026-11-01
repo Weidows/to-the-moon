@@ -71,21 +71,20 @@ export const RabbitScene: React.FC<{durationInFrames: number}> = ({durationInFra
 
       <TextBlock>
         <Beat from={18} until={320}>
-          <Line text="她折过成百上千只兔子。" at={20} type />
-          <Line text="桌上、窗台、灯塔顶上，全是兔子。" at={110} color="rgba(233,238,248,0.8)" />
-          <Line text="每一只，都是她在等他想起来。" at={250} color="rgba(233,238,248,0.86)" />
+          <Line text="成百上千只纸兔子，堆满了整个灯塔" at={20} type />
+          <Line text="每一只，都是她在等他想起来" at={250} color="rgba(233,238,248,0.86)" />
         </Beat>
 
         <Beat from={320} until={660}>
-          <Line text="最后那天，她举起一只：" at={322} color={C.mist} />
+          <Line text="她有孤独症，心意说不出口，只能折进纸里" at={322} color={C.mist} />
           <Quote lines={['「这是什么？」']} at={392} cps={12} />
-          <Line text="「这是一只兔子。」" at={470} color={C.moon} />
-          <Line text="名字他答对了。含义，他答不上来。" at={556} color={C.mist} />
+          <Line text="「这是一只兔子」" at={470} color={C.moon} />
         </Beat>
 
         <Beat from={660}>
-          <Line text="这只兔子，她问过一遍又一遍。他一次也没答对。" at={662} />
-          <Bridge text="要答对，得回到他们刚认识那年。" at={790} />
+          <Line text="名字他答对了，含义，他答不上来" at={662} />
+          <Line text="她问了一遍又一遍，他一次也没答对" at={730} color="rgba(233,238,248,0.8)" />
+          <Bridge text="要答对，得回到他们刚认识那年" at={810} />
         </Beat>
       </TextBlock>
     </SceneShell>

@@ -93,9 +93,9 @@ const EndCard: React.FC = () => {
                 lineHeight: 1.9,
               }}
             >
-              他忘了约定。
+              他忘了约定
               <br />
-              约定没有忘了他。
+              约定没有忘了他
             </div>
           </Appear>
 
@@ -210,26 +210,30 @@ export const MoonScene: React.FC<{durationInFrames: number}> = ({durationInFrame
 
       <TextBlock>
         <Beat from={16} until={250}>
-          <Line text="改过的记忆，从头长了一遍。" at={18} type />
-          <Line text="John 考进了航天中心。" at={106} color="rgba(233,238,248,0.82)" />
+          <Line text="改过的记忆，从头长了一遍" at={18} type />
+          <Line text="他真的考进了航天中心" at={106} color="rgba(233,238,248,0.82)" />
         </Beat>
 
-        <Beat from={250} until={700}>
-          <Line text="在那里，John 遇见了一个女人。" at={252} />
+        <Beat from={250} until={560}>
+          <Line text="在那里，John 遇见了一个女人" at={252} />
           <Quote lines={['「我们是不是见过？」']} at={356} cps={12} />
-          <Line text="他们说不上来为什么，只是觉得等了很久。" at={400} color="rgba(233,238,248,0.86)" />
-          <Line text="这一次，他们没有走散。" at={500} color={C.gold} />
+          <Line text="他们说不上来为什么，只是觉得等了很久" at={400} color="rgba(233,238,248,0.86)" />
+        </Beat>
+
+        <Beat from={560} until={700}>
+          <Line text="这一次，他们没有走散" at={562} color={C.gold} />
+          <Line text="就像在兑现一个，他们都想不起来的约定" at={640} color="rgba(233,238,248,0.78)" />
         </Beat>
 
         <Beat from={700} until={890}>
-          <Line text="他们并排坐在飞船上。" at={702} />
-          <Line text="火箭升空。" at={800} color="rgba(233,238,248,0.82)" />
+          <Line text="他们并排坐在飞船上" at={702} />
+          <Line text="火箭升空" at={800} color="rgba(233,238,248,0.82)" />
         </Beat>
 
         <Beat from={890} until={1150}>
-          <Line text="月球越来越近。" at={892} type />
-          <Line text="John 的心跳，一点一点停下来。" at={982} color={C.moon} />
-          <Line text="他终于去了月球。她就在旁边。" at={1075} color="rgba(233,238,248,0.88)" />
+          <Line text="月球越来越近" at={892} type />
+          <Line text="John 的心跳，一点一点停下来" at={982} color={C.moon} />
+          <Line text="他终于去了月球，她就在旁边" at={1075} color="rgba(233,238,248,0.88)" />
         </Beat>
       </TextBlock>
 
