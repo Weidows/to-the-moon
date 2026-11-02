@@ -1,11 +1,11 @@
-"""Check that `docs/script.md` and the scene components say the same thing.
+"""Check that `public/script.md` and the scene components say the same thing.
 
 The doc duplicates every on-screen string as a `Line` / `Quote` / `Bridge` /
 `TypeText` prop, so editing one side silently makes the film tell a different
 story than the doc. This walks both sides in scene order and prints the drift.
 
-  python tools/check_script.py            # exit 1 on drift
-  python tools/check_script.py -v         # also print every matched line
+  python3 src/tools/check_script.py            # exit 1 on drift
+  python3 src/tools/check_script.py -v         # also print every matched line
 
 Known false positives, handled explicitly below: the prologue quote and the
 end-card prose are plain JSX text nodes, not props, so they are read separately.
@@ -68,7 +68,7 @@ def scene_strings():
 
 
 def doc_strings():
-    md = (ROOT / "docs" / "script.md").read_text(encoding="utf8")
+    md = (ROOT / "public" / "script.md").read_text(encoding="utf8")
     md = md.split("## 同步状态")[0].split("## 待同步到")[0]
     out = []
     for ln in md.splitlines():

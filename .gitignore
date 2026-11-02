@@ -4,3 +4,6 @@ out/
 .tmp_*
 npm-debug.log*
 .DS_Store
+
+# 出图候选池：几百张临时图，筛完就没用了（chosen 的写进 jobs 提示词即可）
+public/characters/

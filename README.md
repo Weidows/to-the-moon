@@ -14,11 +14,16 @@
 ## 预览 / 渲染
 
 ```bash
-npm run dev                # Remotion Studio, http://localhost:3000
+npm run dev                    # Remotion Studio, http://localhost:3000
 npm run typecheck
 npm run check:script           # 文稿与 src/scenes 的旁白是否同步
-npm run render             # 横版 → out/to-the-moon.mp4
-npm run render:vertical    # 竖版 → out/to-the-moon-vertical.mp4
+npm run render                 # 横版 → out/to-the-moon.mp4
+npm run render:vertical        # 竖版 → out/to-the-moon-vertical.mp4
+
+# 出图在 4090 上跑（见下面「出图」一节）
+python src/tools/remote.py gen_characters.py --seeds 2   # 人物形象候选
+python src/tools/remote.py gen_scenes.py                # 全片镜头图
+python src/tools/to_web.py --check                      # 哪些 img/ 还没有来源
 ```
 
 Studio 里可以直接拖动时间轴看每一层，改动会热更新。
@@ -61,6 +66,7 @@ src/
   Film.tsx           拼装场景、全局星空/刻度/文字纹理、音轨
   components/        Shot（镜头运动）、Text（逐字打出）、DepthGauge（层深刻度）、Motifs（折纸兔/月球）
   scenes/S1..S10     一场一个文件
+  tools/             出图与校对脚本：comfy.py（唯一引擎）、gen_characters/gen_scenes/to_web、jobs/ 提示词
 ```
 
 想改文案：进对应 `src/scenes/Sx*.tsx`，找 `<Line text="..." at={帧}>`。
@@ -68,46 +74,43 @@ src/
 
 ## 素材来源
 
-- 游戏内截图、官方壁纸：Steam 商店页 To the Moon (appid 206440) 与 Fandom 的 To the Moon Wiki（`https://tothemoon.fandom.com`），下载脚本在 `tools/fetch_fandom.py`
-- 原始素材（用户提供）：`ref/`，含剧情长文、截图、For River 音频
+- 游戏内截图、官方壁纸：Steam 商店页 To the Moon (appid 206440) 与 Fandom 的 To the Moon Wiki（`https://tothemoon.fandom.com`），下载脚本在 `src/tools/fetch_fandom.py`，成品在 `public/online/`
+- 剧情长文、人物设定、旁白文稿：`public/`（`万字诠释…md`、`主线描述.md`、`人物设定.md`、`script.md`）
 - 字体：Zpix 最像素（OFL），`public/fonts/zpix.woff2`
-- 玩法提示：`tools/shots.mjs` 可以一次打包渲染任意帧，用于逐帧检查排版
+- 逐帧检查：`src/tools/shots.mjs` 可以一次打包渲染任意帧，用于逐帧检查排版
 
-## 本地 MOSS-Image 生成的插画
+## 出图：4090 + Qwen-Image-2.1
 
-官方素材里画面不清楚、分辨率偏低或构图不适配的位置，用本地 ComfyUI 的
-MOSS-Image 重新画了 18 张 1792×1008 的像素插画（下面这张表就是全部）：
+本机不再跑 ComfyUI，也不再使用 MOSS-Image。所有插画都由 4090
+（`<gpu-host>`）上的 ComfyUI 出图，它的 8188 只监听本机，
+所以脚本一律在服务器上跑（`src/tools/remote.py` 负责 scp + ssh）：
 
-| 文件名 | 用在哪 | 替代了 |
-| --- | --- | --- |
-| `gen_hospital.jpg` | 00 委托 · 临终病房 | 暗且带 HUD 的游戏截图 |
-| `gen_memento.jpg` | 01 尝试 · 满屋折纸兔 | 带英文弹窗的截图 |
-| `gen_rain.jpg` | 02 灯塔 · 雨夜 | 过暗的雨夜截图 |
-| `gen_piano.jpg` | 03 兔子 · 钢琴房 | 空旷的暗色插画 |
-| `gen_carnival.jpg` | 04 初见 · 狂欢节 | 760px 小图放大 |
-| `gen_void.jpg` | 06 迷雾 · 记忆虚空 | 昏暗难辨的截图 |
-| `gen_twins.jpg` | 06 迷雾 · 双胞胎卧室 | 原本没有图 |
-| `gen_nasa.jpg` | 终章 · 航天中心 | 原本没有图 |
-| `gen_clash.jpg` | 07 抉择 · 两位博士争执 | 原本没有图 |
-| `gen_miss.jpg` | 07 抉择 · 让童年错过彼此 | 原本没有图 |
-| `gen_cabin.jpg` | 终章 · 飞船舱内 | 原本没有图 |
-| `last_request.jpg` | 00 委托 · 临终病房，老人指向月亮 | 暗且带 HUD 的游戏截图 |
-| `machine.jpg` | 00 委托 · 记忆改写设备 | 官方截图 |
-| `tower_night.jpg` | 02 灯塔 · 雨夜 | 过暗的截图 |
-| `river.png` | 03 兔子 · 她坐在满屋折纸兔中间 | 官方立绘（分辨率低） |
-| `river_reading.jpg` | 03 兔子 · 最后那天举起一只兔子 | 官方截图 |
-| `kids_plane.jpg` | 04 初见 · 两个孩子躺在草地看银河 | 760px 小图 |
-| `deep_space.jpg` | 终章 · 深空月球（压暗到 44%） | 低清壁纸 |
+```bash
+python src/tools/remote.py gen_characters.py --seeds 2   # 人物形象候选
+python src/tools/remote.py gen_scenes.py pl_rain         # 指定一个镜头
+python src/tools/to_web.py --check                       # 哪些 img/ 还没有来源
+```
 
-- 提示词：`tools/jobs/pl_*.json`（中文长句 + 统一风格尾巴 + 固定 seed，可直接改文案重跑）
-- 出图：`python tools/moss.py --job tools/jobs/pl_rain.json --out .tmp/moss`
-  管线是 `UNETLoader(moss_image_sft_int8_convrot) → KSampler(er_sde/simple, 30步, cfg 3)`
-  ＋ `CLIPLoader(qwen3.5_9b_w4a8_gptq, type=moss_image)` ＋ `flux2-vae_small`。
-  原工作流里的 `SpectrumMOSSImageAdaptive` 加速节点本机没装（`custom_nodes` 里没有），
-  脚本走的是不开加速的直连版本；装上后可以加回节点、步数降到 25。
-  单张 1792×1008 约 50 秒。
-- 落地：`python tools/to_web.py`（PNG → `public/img/*.jpg`，原图另存 `ref/generated/`）
-- 原图留在 `ref/generated/`，`public/img/` 里是压缩后的 JPEG。
+- 引擎：`UNETLoader(qwen_image_2.1_int8_convrot)` ＋ `CLIPLoader(qwen3vl_8b_int8_convrot, type=qwen_image)`
+  ＋ `qwen_image_2.1_vae_bf16`，`KSampler(er_sde/simple, 30 步, cfg 2.5)`。
+  1024² 约 12 秒一张，1792×1008 约 20 秒。唯一的引擎定义在 `src/tools/comfy.py`，改模型只动那里。
+- 用 `PreviewImage` 而不是 `SaveImage`：候选图不写进 `ComfyUI/output`（那个目录和
+  `F:\Pictures\aigc\comfyui` 双向同步），只落在 ComfyUI 的 temp 里，由脚本按自己的命名取回，
+  筛选前后都不会污染同步盘。
+
+两级流程：
+
+| 阶段 | 输入 | 脚本 | 落地 |
+| --- | --- | --- | --- |
+| ① 形象图 | `public/人物设定.md` | `src/tools/gen_characters.py` | `public/characters/`（候选池，人肉筛） |
+| ② 镜头图 | `src/tools/jobs/pl_*.json` | `src/tools/gen_scenes.py` | `.tmp/renders/`（gitignored） |
+| ③ 成品 | ②的渲染 | `src/tools/to_web.py` | `public/img/`（scenes 直接 import） |
+
+- 先定①：形象定下来以后，把发色/服装写回 `jobs/*.json` 的提示词，再跑②③。
+- `jobs/` 里 20 个 job 覆盖 29 个镜头引用中的 20 个，job→文件名的映射就是
+  `to_web.py` 的 `TARGETS`；剩下 9 个是官方截图/壁纸，手工从 `public/online`、`public/generated`
+  挑好放进 `public/img/`（`to_web.py --check` 会逐个标出来）。
+- `gen_scenes.py --offset 100` 让 seed 整体后移，用来对同一个镜头重出一轮候选。
 
 ## 排查记录：播放卡顿（2026-10-31）
 
