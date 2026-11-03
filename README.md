@@ -21,9 +21,10 @@ npm run render                 # 横版 → out/to-the-moon.mp4
 npm run render:vertical        # 竖版 → out/to-the-moon-vertical.mp4
 
 # 出图在 4090 上跑（见下面「出图」一节）
-python src/tools/remote.py gen_characters.py --seeds 2   # 人物形象候选
-python src/tools/remote.py gen_scenes.py                # 全片镜头图
+#   形象图/镜头图：aigc/comfyui 的 pipelines/character-sheet、pipelines/scene
+#   拉回 .tmp/renders/ 后转换：
 python src/tools/to_web.py --check                      # 哪些 img/ 还没有来源
+python src/tools/to_web.py                              # .tmp/renders → public/img
 ```
 
 Studio 里可以直接拖动时间轴看每一层，改动会热更新。
@@ -79,38 +80,30 @@ src/
 - 字体：Zpix 最像素（OFL），`public/fonts/zpix.woff2`
 - 逐帧检查：`src/tools/shots.mjs` 可以一次打包渲染任意帧，用于逐帧检查排版
 
-## 出图：4090 + Qwen-Image-2.1
+## 出图：4090 + MOSS-Image（带角色参考图）
 
-本机不再跑 ComfyUI，也不再使用 MOSS-Image。所有插画都由 4090
-（`<gpu-host>`）上的 ComfyUI 出图，它的 8188 只监听本机，
-所以脚本一律在服务器上跑（`src/tools/remote.py` 负责 scp + ssh）：
+本机不跑 ComfyUI。所有图都在 4090（`<gpu-host>`）上出，
+跑图脚本住在 `aigc/comfyui` 的 `pipelines/` 下
+（`ops/deploy.sh` 平铺部署到服务器 `/root/pose_pipeline/`），产物落 `/root/ComfyUI/output/`。
 
-```bash
-python src/tools/remote.py gen_characters.py --seeds 2   # 人物形象候选
-python src/tools/remote.py gen_scenes.py pl_rain         # 指定一个镜头
-python src/tools/to_web.py --check                       # 哪些 img/ 还没有来源
-```
-
-- 引擎：`UNETLoader(qwen_image_2.1_int8_convrot)` ＋ `CLIPLoader(qwen3vl_8b_int8_convrot, type=qwen_image)`
-  ＋ `qwen_image_2.1_vae_bf16`，`KSampler(er_sde/simple, 30 步, cfg 2.5)`。
-  1024² 约 12 秒一张，1792×1008 约 20 秒。唯一的引擎定义在 `src/tools/comfy.py`，改模型只动那里。
-- 用 `PreviewImage` 而不是 `SaveImage`：候选图不写进 `ComfyUI/output`（那个目录和
-  `F:\Pictures\aigc\comfyui` 双向同步），只落在 ComfyUI 的 temp 里，由脚本按自己的命名取回，
-  筛选前后都不会污染同步盘。
-
-两级流程：
-
-| 阶段 | 输入 | 脚本 | 落地 |
+| 阶段 | 输入 | 在哪跑 | 落地 |
 | --- | --- | --- | --- |
-| ① 形象图 | `public/人物设定.md` | `src/tools/gen_characters.py` | `public/characters/`（候选池，人肉筛） |
-| ② 镜头图 | `src/tools/jobs/pl_*.json` | `src/tools/gen_scenes.py` | `.tmp/renders/`（gitignored） |
-| ③ 成品 | ②的渲染 | `src/tools/to_web.py` | `public/img/`（scenes 直接 import） |
+| ① 形象图 | `public/人物设定.md` | `comfyui: pipelines/character-sheet/charbatch.py` | `/root/ComfyUI/output/character-sheet/<model>/` |
+| ② 镜头图 | `人物设定.md` + `src/tools/jobs/pl_*.json` | `comfyui: pipelines/scene/scene_batch.py` | `/root/ComfyUI/output/scene/moss/` |
+| ③ 成品 | ②拉回来的 `<job>_<seed>.png` 放 `.tmp/renders/` | `src/tools/to_web.py` | `public/img/`（scenes 直接 import） |
 
-- 先定①：形象定下来以后，把发色/服装写回 `jobs/*.json` 的提示词，再跑②③。
-- `jobs/` 里 20 个 job 覆盖 29 个镜头引用中的 20 个，job→文件名的映射就是
-  `to_web.py` 的 `TARGETS`；剩下 9 个是官方截图/壁纸，手工从 `public/online`、`public/generated`
-  挑好放进 `public/img/`（`to_web.py --check` 会逐个标出来）。
-- `gen_scenes.py --offset 100` 让 seed 整体后移，用来对同一个镜头重出一轮候选。
+- 引擎（MOSS）：`moss_image_sft_int8_convrot` ＋ `moss_text_encoder`（type=`moss_image`）
+  ＋ `flux2-vae_small`，`KSampler(er_sde/simple, 30 步, cfg 2.5)`。
+  1792×1008 实测 **18.0s/张**，20 个镜头约 6 分钟。
+- 角色一致性靠参考图：有角色的镜头走 `TextEncodeMOSSImageEdit`（图进**文本编码器**，不接 VAE、不加 edit LoRA），
+  参考图放 `input/work/scene-refs/`，强度 0.9（成人特写）→ 0.75（双人同框）→ **不给**（孩子镜头、背影、空镜）。
+  给成人形象图哪怕是孩子镜头，也会在画面里塞进一张成人脸。
+- 提示词源头是 `src/tools/jobs/pl_*.json`。改人物设定时必须回来改这 20 个 job，
+  再重新生成 `comfyui` 里的 `pipelines/scene/tothemoon_scenes.json`——参考图对了、文字错了，模型照样按文字画。
+- 拉图按 `<job>_<seed>.png` 命名放进 `.tmp/renders/`（`to_web.py` 用 `latest()` 挑最新一张）。
+- `jobs/` 的 20 个 job 覆盖 29 个镜头引用中的 20 个，job→文件名的映射就是 `to_web.py` 的 `TARGETS`；
+  剩下 9 个是官方截图/壁纸，放在 `public/img/`（`to_web.py --check` 会逐个标出来）。
+- 具体踩坑（autogrow 键名、参考图漏脸、暗提示词反向、人数写不死）记在 `comfyui/docs/pipelines.md`。
 
 ## 排查记录：播放卡顿（2026-10-31）
 
