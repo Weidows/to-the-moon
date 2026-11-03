@@ -27,7 +27,7 @@ export const SealedScene: React.FC<{durationInFrames: number}> = ({durationInFra
           brightness={0.95}
         />
         <Shot src="img/gen_twins.jpg" from={332} zoom={[1.02, 1.14]} focus={[0.5, 0.5]} />
-        <Scrim height="64%" />
+        <Scrim height="58%" />
       </>
     }
   >

@@ -26,7 +26,7 @@ export const NowScene: React.FC<{durationInFrames: number}> = ({durationInFrames
         />
         <Shot src="img/last_request.jpg" from={300} to={650} zoom={[1.02, 1.12]} focus={[0.5, 0.45]} />
         <Shot src="img/machine.jpg" from={620} zoom={[1.02, 1.12]} focus={[0.52, 0.45]} />
-        <Scrim height="64%" />
+        <Scrim height="58%" />
       </>
     }
   >

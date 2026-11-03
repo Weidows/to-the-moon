@@ -1,6 +1,6 @@
 import React from 'react';
 import {interpolate, Easing, useCurrentFrame, useVideoConfig} from 'remotion';
-import {C, PIXEL} from '../theme';
+import {C, HALO, PIXEL} from '../theme';
 import {useLayout} from '../layout';
 
 const ease = Easing.bezier(0.22, 1, 0.36, 1);
@@ -128,7 +128,7 @@ export const Quote: React.FC<{
                 color,
                 lineHeight: 1.7,
                 letterSpacing: 0.5,
-                textShadow: '0 2px 18px rgba(0,0,0,0.85)',
+                textShadow: HALO,
               }}
             >
               <TypeText text={l} at={at + i * gap + 4} cps={cps} />

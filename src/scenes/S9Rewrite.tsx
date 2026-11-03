@@ -26,7 +26,7 @@ export const ChoiceScene: React.FC<{durationInFrames: number}> = ({durationInFra
           brightness={0.98}
         />
         <Shot src="img/gen_miss.jpg" from={570} zoom={[1.02, 1.16]} focus={[0.5, 0.52]} />
-        <Scrim height="62%" />
+        <Scrim height="56%" />
       </>
     }
   >

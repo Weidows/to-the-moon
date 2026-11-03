@@ -30,7 +30,7 @@ export const CarnivalScene: React.FC<{durationInFrames: number}> = ({durationInF
           focus={[0.5, 0.45]}
         />
         <Shot src="img/kids_plane.jpg" from={680} zoom={[1.03, 1.14]} focus={[0.5, 0.5]} />
-        <Scrim height="60%" />
+        <Scrim height="56%" />
       </>
     }
   >

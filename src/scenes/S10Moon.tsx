@@ -199,7 +199,7 @@ export const MoonScene: React.FC<{durationInFrames: number}> = ({durationInFrame
             brightness={0.44}
             saturate={0.9}
           />
-          <Scrim height="66%" />
+          <Scrim height="58%" />
           <Glow x="50%" y="34%" size="52%" color="#bcd6ff" opacity={0.14} />
         </>
       }

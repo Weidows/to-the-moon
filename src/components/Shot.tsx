@@ -152,11 +152,11 @@ export const Flash: React.FC<{
 
 /** Bottom scrim so text always sits on a readable base. */
 export const Scrim: React.FC<{height?: string; color?: string}> = ({
-  height = '62%',
+  height = '56%',
   color = C.ink,
 }) => {
   const layout = useLayout();
-  const h = layout.portrait ? '44%' : height;
+  const h = layout.portrait ? '38%' : height;
   return (
   <div
     style={{
@@ -165,7 +165,8 @@ export const Scrim: React.FC<{height?: string; color?: string}> = ({
       right: 0,
       bottom: 0,
       height: h,
-      background: `linear-gradient(180deg, rgba(0,0,0,0) 0%, ${color}b0 38%, ${color}e8 60%, ${color} 88%)`,
+      // 从 0 线性爬到 0.87，不在中途就吃到饱和——否则下半屏像一条黑边
+      background: `linear-gradient(180deg, rgba(0,0,0,0) 0%, ${color}4d 34%, ${color}96 68%, ${color}dd 100%)`,
       pointerEvents: 'none',
     }}
   />

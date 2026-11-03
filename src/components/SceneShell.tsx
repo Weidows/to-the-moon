@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, Easing, useCurrentFrame} from 'remotion';
-import {C, PIXEL, snap} from '../theme';
+import {C, HALO, PIXEL, snap} from '../theme';
 import {useLayout} from '../layout';
 import {Eyebrow} from './Text';
 import type {LayerTag} from '../timeline';
@@ -124,6 +124,8 @@ export const TextBlock: React.FC<{children: React.ReactNode; style?: React.CSSPr
         left: layout.pad,
         top: layout.textTop,
         width: layout.textWidth,
+        // 描边光晕：黑边不铺满下半屏也能在亮画面上读清
+        textShadow: HALO,
         ...style,
       }}
     >

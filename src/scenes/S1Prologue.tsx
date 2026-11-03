@@ -37,7 +37,7 @@ export const PrologueScene: React.FC<{durationInFrames: number}> = ({durationInF
             fadeIn={26}
             fadeOut={18}
           />
-          <Scrim height="70%" />
+          <Scrim height="60%" />
         </>
       }
     >

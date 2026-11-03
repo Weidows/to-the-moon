@@ -54,7 +54,7 @@ TARGETS = {
 # public/generated 里挑好手工放进 public/img/，不走本脚本
 OFFICIAL = {
     "title_lighthouse.png", "memory_tunnel.jpg", "timeline_cliff.jpg",
-    "lighthouse_night.jpg", "pointing_moon.jpg", "stargazing.jpg",
+    "lighthouse_night.jpg", "pointing_moon.jpg",
     "silhouettes_moon.jpg", "launching.jpg", "rocket_pastel.jpg",
 }
 

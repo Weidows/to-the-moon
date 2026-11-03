@@ -23,7 +23,7 @@ export const LighthouseScene: React.FC<{durationInFrames: number}> = ({durationI
         />
         <Shot src="img/tower_night.jpg" from={308} to={650} zoom={[1.02, 1.12]} focus={[0.5, 0.5]} />
         <Shot src="img/lighthouse_night.jpg" from={630} zoom={[1.03, 1.14]} focus={[0.52, 0.45]} />
-        <Scrim height="62%" />
+        <Scrim height="56%" />
       </>
     }
   >

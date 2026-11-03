@@ -26,7 +26,7 @@ export const CorridorScene: React.FC<{durationInFrames: number}> = ({durationInF
         />
         <Shot src="img/memory_tunnel.jpg" from={280} to={640} zoom={[1.06, 1.16]} focus={[0.5, 0.5]} />
         <Shot src="img/timeline_cliff.jpg" from={610} pixel zoom={[1.24, 1.1]} focus={[0.5, 0.575]} />
-        <Scrim height="64%" />
+        <Scrim height="58%" />
       </>
     }
   >

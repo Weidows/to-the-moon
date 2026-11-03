@@ -59,7 +59,7 @@ export const RabbitScene: React.FC<{durationInFrames: number}> = ({durationInFra
           />
           <Shot src="img/river_reading.jpg" from={320} to={660} zoom={[1.02, 1.12]} focus={[0.5, 0.45]} />
           <Shot src="img/gen_piano.jpg" from={640} zoom={[1.04, 1.14]} focus={[0.5, 0.52]} brightness={1.0} />
-          <Scrim height="60%" />
+          <Scrim height="56%" />
         </>
       }
     >
