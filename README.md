@@ -75,7 +75,12 @@ src/
 
 ## 素材来源
 
-- 游戏内截图、官方壁纸：Steam 商店页 To the Moon (appid 206440) 与 Fandom 的 To the Moon Wiki（`https://tothemoon.fandom.com`），下载脚本在 `src/tools/fetch_fandom.py`，成品在 `public/online/`
+- 游戏内截图：**Steam 商店页** To the Moon（appid 206440，
+  `https://store.steampowered.com/app/206440/`）的官方截图。版权归 Freebird Games，
+  **原图不随仓库分发**（`.gitignore` 里的 `public/online/steam/`），需要时按下面的脚本自行抓取。
+- 官方壁纸 / 同人美术：Fandom 的 To the Moon Wiki（`https://tothemoon.fandom.com`），
+  抓取脚本 `src/tools/fetch_fandom.py`（清单 `src/tools/fandom_images.json`，含每张图的
+  `descriptionurl` 可回查原始页面），成品在 `public/online/`
 - 剧情长文、人物设定、旁白文稿：`public/`（`万字诠释…md`、`主线描述.md`、`人物设定.md`、`script.md`）
 - 字体：Zpix 最像素（OFL），`public/fonts/zpix.woff2`
 - 逐帧检查：`src/tools/shots.mjs` 可以一次打包渲染任意帧，用于逐帧检查排版
@@ -139,7 +144,9 @@ src/
 
 - 《去月球 / To the Moon》的角色、剧情、音乐版权归 **Freebird Games / Kan Gao** 所有。
   本片是非商业同人致敬作品，不用于任何营收。
-- `public/online/`、`public/img/` 里的部分图片是游戏截图与官方/同人美术，仅作同人创作参考。
+- `public/img/` 里少数镜头用的是游戏截图/官方壁纸（`title_lighthouse`、`memory_tunnel`、
+  `timeline_cliff` 等），版权归 Freebird Games，仅作同人创作参考。
+- Steam 官方截图（`public/online/steam/`，来源 appid 206440）与音轨一样**不进仓库**。
 - 音轨是 PianiCast 的钢琴翻奏（312s），**不进仓库**。要重新渲染请自备音轨放到
   `public/for-river.mp3`，否则 `src/tools/` 之外的渲染会因缺资源失败。
 - 画面素材除上述截图外，其余由本项目的 ComfyUI 流水线生成（MOSS-Image / Qwen-Image-2.1）。

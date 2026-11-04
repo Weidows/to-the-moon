@@ -15,3 +15,6 @@ public/for-river.mp3
 # 形象候选池：几百张 1M 级 PNG，筛完就废；总览图（sheet_*.jpg / ab/）保留
 public/gen/character-sheet/moss/
 public/gen/character-sheet/qwen/
+
+# Steam 官方截图：版权归 Freebird Games，原图不随仓库分发（来源见 README「素材来源」）
+public/online/steam/
