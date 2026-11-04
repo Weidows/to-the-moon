@@ -81,10 +81,10 @@ def doc_strings():
     return out
 
 
-def readme_quotes():
-    """README's 分镜表 quotes the hand-off lines; they must exist verbatim.
-    Scoped to that section so song/film titles elsewhere are not checked."""
-    md = (ROOT / "README.md").read_text(encoding="utf8")
+def doc_quotes():
+    """`docs/剧情与分镜.md` 的表格引用每层的交接句，必须能在片子里逐字找到。
+    只扫「## 分镜」这一节，免得把歌名、片名也算进去。"""
+    md = (ROOT / "docs" / "剧情与分镜.md").read_text(encoding="utf8")
     m = re.search(r"^## 分镜$(.*?)^## ", md, re.S | re.M)
     return re.findall(r"「([^」]+)」", m.group(1) if m else "")
 
@@ -118,16 +118,16 @@ def main():
 
     # README 分镜表里引用的句子也必须能在片子里找到
     joined = "".join(a)
-    stale = [q for q in readme_quotes() if norm(q) not in joined]
+    stale = [q for q in doc_quotes() if norm(q) not in joined]
     if stale:
-        print(f"\nREADME 引用了片子里没有的句子（{len(stale)} 条）：")
+        print(f"\ndocs/剧情与分镜.md 引用了片子里没有的句子（{len(stale)} 条）：")
         for q in stale:
             print(f"  「{q}」")
 
     if drift or stale:
         print("\n文案不同步：改一边就必须改另一边。")
         return 1
-    print("两边一致，README 引用也都在片子里。")
+    print("两边一致，分镜表引用也都在片子里。")
     return 0
 
 
