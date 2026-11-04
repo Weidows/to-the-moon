@@ -8,3 +8,10 @@ build
 
 # 出图候选池：几百张临时图，筛完就没用了（chosen 的写进 jobs 提示词即可）
 public/characters/
+
+# 版权素材：游戏原声翻奏，只在本地用于渲染，不进公开仓库
+public/for-river.mp3
+
+# 形象候选池：几百张 1M 级 PNG，筛完就废；总览图（sheet_*.jpg / ab/）保留
+public/gen/character-sheet/moss/
+public/gen/character-sheet/qwen/

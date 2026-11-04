@@ -15,7 +15,7 @@
   python3 src/tools/remote.py gen_characters.py --seeds 2 --pull public/characters
 
 主机和目录可以用环境变量改：
-  TO_THE_MOON_HOST（默认 <gpu-host>）
+  TO_THE_MOON_HOST（必填，指向出图机；脚本里不留默认主机名）
   TO_THE_MOON_DIR （默认 /root/to-the-moon）
 """
 import os
@@ -23,7 +23,9 @@ import subprocess
 import sys
 import pathlib
 
-HOST = os.environ.get("TO_THE_MOON_HOST", "<gpu-host>")
+HOST = os.environ.get("TO_THE_MOON_HOST", "")
+if not HOST:
+    raise SystemExit("请先设 TO_THE_MOON_HOST=<user@出图机>；这个脚本不内置主机名。")
 RDIR = os.environ.get("TO_THE_MOON_DIR", "/root/to-the-moon")
 LOCAL = pathlib.Path(__file__).resolve().parent          # src/tools
 ROOT = LOCAL.parents[1]

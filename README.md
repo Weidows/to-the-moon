@@ -135,4 +135,13 @@ src/
 
 以后加新镜头就跑一遍这个体检：按中点抽帧、算 `top60%` 均值，低于 12 就是要处理的对象。
 
-素材版权归 Freebird Games 所有，本片为非商业同人致敬作品。
+## 素材与版权
+
+- 《去月球 / To the Moon》的角色、剧情、音乐版权归 **Freebird Games / Kan Gao** 所有。
+  本片是非商业同人致敬作品，不用于任何营收。
+- `public/online/`、`public/img/` 里的部分图片是游戏截图与官方/同人美术，仅作同人创作参考。
+- 音轨是 PianiCast 的钢琴翻奏（312s），**不进仓库**。要重新渲染请自备音轨放到
+  `public/for-river.mp3`，否则 `src/tools/` 之外的渲染会因缺资源失败。
+- 画面素材除上述截图外，其余由本项目的 ComfyUI 流水线生成（MOSS-Image / Qwen-Image-2.1）。
+- 字体 `Zpix`（最像素）版权归原作者 SolidZORO 所有，使用前请自行确认其授权条款。
+- 仓库本身未附 LICENSE；如需复用代码请先开 issue 联系。

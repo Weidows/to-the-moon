@@ -1,10 +1,11 @@
-"""4090 ComfyUI 客户端 + Qwen-Image-2.1 工作流（本仓库唯一的出图引擎）。
+"""ComfyUI 客户端 + Qwen-Image-2.1 工作流（形象候选那一路的出图引擎）。
 
-本机不再跑 ComfyUI，也不再使用 MOSS-Image：所有出图都发到 4090
-（<gpu-host>），它的 ComfyUI 只监听 127.0.0.1:8188，
-本机直连不上。两种跑法：
+出图不在本机跑：请求发到 `COMFY_HOST`（默认 127.0.0.1:8188）指向的 ComfyUI 实例，
+它通常只监听那台机器的本地回环，所以要么在那边直接跑，要么先开 SSH 隧道。
+成片镜头图走的是另一条流水线（MOSS-Image + 角色参考图，见 `aigc/comfyui` 的
+`pipelines/scene`），这里只负责 Qwen 这一路。
 
-  在 4090 上直接跑（图留在服务器，本人直接在上面筛）：
+  在出图机上直接跑（图留在那台机器上直接筛）：
     scp -r src/tools <gpu-host>:/root/to-the-moon/src/
     ssh <gpu-host>
     cd /root/to-the-moon && python3 src/tools/gen_characters.py
@@ -28,7 +29,7 @@ import urllib.request
 
 HOST = os.environ.get("COMFY_HOST", "http://127.0.0.1:8188").rstrip("/")
 
-# Qwen-Image-2.1 栈（4090 上这三个文件都已就位，`/object_info` 可核对）
+# Qwen-Image-2.1 栈（这三个文件要在出图机上就位，用 `/object_info` 核对）
 UNET = "qwen_image_2.1_int8_convrot.safetensors"
 CLIP = "qwen3vl_8b_int8_convrot.safetensors"
 CLIP_TYPE = "qwen_image"
@@ -76,7 +77,7 @@ def _post(path, payload, timeout=60):
                          f"核对 UNETLoader/CLIPLoader/VAELoader 的清单。")
     except urllib.error.URLError as e:
         raise SystemExit(f"连不上 ComfyUI（{HOST}）：{e.reason}\n"
-                         f"4090 的 8188 只监听本机，请在服务器上跑，"
+                         f"ComfyUI 默认只监听本机回环，请在出图机上跑，"
                          f"或先 ssh -N -L 8188:127.0.0.1:8188 开隧道。")
 
 
