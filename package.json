@@ -10,7 +10,7 @@
     "check:script": "python src/tools/check_script.py"
   },
   "dependencies": {
-    "@remotion/cli": "4.0.539",
+    "@remotion/cli": "4.0.540",
     "@remotion/fonts": "4.0.539",
     "@remotion/transitions": "4.0.539",
     "react": "19.2.0",
