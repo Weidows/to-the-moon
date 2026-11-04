@@ -51,7 +51,7 @@ TARGETS = {
 }
 
 # scenes 引用但不归 20 个 job 管的：官方截图/壁纸，从 public/online、
-# public/generated 里挑好手工放进 public/img/，不走本脚本
+# public/gen 里挑好手工放进 public/img/，不走本脚本
 OFFICIAL = {
     "title_lighthouse.png", "memory_tunnel.jpg", "timeline_cliff.jpg",
     "lighthouse_night.jpg", "pointing_moon.jpg",
